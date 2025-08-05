@@ -1,0 +1,107 @@
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Header } from "./layout/Header";
+import { Footer } from "./layout/Footer";
+import { BlogPage } from "./pages/BlogPage";
+import { PortfolioPage } from "./pages/PortfolioPage";
+import { AboutPage } from "./pages/AboutPage";
+import { texts, blogPosts, projects, skills } from "../data";
+
+const SolDevPortfolio = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const [isDark, setIsDark] = useState(false);
+  const [currentLang, setCurrentLang] = useState("ko");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
+  // URL에서 현재 페이지 추출
+  const getCurrentPageFromPath = (pathname: string) => {
+    const path = pathname.split("/")[1]; // '/blog' -> 'blog'
+    return path || "blog";
+  };
+
+  const currentPage = getCurrentPageFromPath(location.pathname);
+
+  // 페이지 변경 시 URL 업데이트
+  const setCurrentPage = (page: string) => {
+    navigate(`/${page}`);
+  };
+
+  // URL 변경 시 페이지 상태 동기화
+  useEffect(() => {
+    const page = getCurrentPageFromPath(location.pathname);
+    if (page !== currentPage) {
+      // URL이 변경되었지만 상태는 이미 동기화되어 있음
+    }
+  }, [location.pathname]);
+
+  const t = texts[currentLang as keyof typeof texts];
+
+  return (
+    <>
+      {/* Google Fonts 로드 */}
+      <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+
+      <div
+        className={`min-h-screen transition-colors duration-300 ${
+          isDark
+            ? "bg-slate-900 text-white"
+            : "bg-gradient-to-br from-yellow-50/30 via-amber-50/20 to-green-50/30 text-gray-900"
+        }`}
+      >
+        {/* 헤더 */}
+        <Header
+          isDark={isDark}
+          setIsDark={setIsDark}
+          currentLang={currentLang}
+          setCurrentLang={setCurrentLang}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          mobileMenuOpen={mobileMenuOpen}
+          setMobileMenuOpen={setMobileMenuOpen}
+          t={t}
+        />
+
+        {/* 메인 콘텐츠 */}
+        <main className="max-w-6xl mx-auto px-4 py-8">
+          {currentPage === "blog" && (
+            <BlogPage
+              isDark={isDark}
+              currentLang={currentLang}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+              t={t}
+              blogPosts={blogPosts}
+            />
+          )}
+          {currentPage === "portfolio" && (
+            <PortfolioPage
+              isDark={isDark}
+              currentLang={currentLang}
+              t={t}
+              projects={projects}
+            />
+          )}
+          {currentPage === "about" && (
+            <AboutPage
+              isDark={isDark}
+              currentLang={currentLang}
+              t={t}
+              skills={skills}
+            />
+          )}
+        </main>
+
+        {/* 푸터 */}
+        <Footer isDark={isDark} t={t} />
+      </div>
+    </>
+  );
+};
+
+export default SolDevPortfolio;
