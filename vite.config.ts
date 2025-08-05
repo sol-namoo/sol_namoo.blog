@@ -20,4 +20,10 @@ export default defineConfig({
   optimizeDeps: {
     include: ["buffer"],
   },
+  // 마크다운 파일을 raw 텍스트로 처리
+  build: {
+    rollupOptions: {
+      external: [],
+    },
+  },
 });

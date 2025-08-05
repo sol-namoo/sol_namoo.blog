@@ -127,6 +127,7 @@ export const BlogPage = ({
           </h3>
           <div className="flex flex-wrap gap-2">
             <button
+              key="all"
               onClick={() => handleCategoryClick("all")}
               className={`px-3 py-1 rounded-full text-xs sm:text-sm transition-all ${
                 selectedCategory === "all"

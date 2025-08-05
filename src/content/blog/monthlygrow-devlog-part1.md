@@ -1,6 +1,6 @@
 ---
 id: "monthlygrow-devlog-part1"
-emoji: "🎮📅🔄"
+emoji: "🎮 📅 🔄"
 title_ko: "monthlyGrow 개발기 ①"
 title_en: "monthlyGrow Devlog ①"
 date: "2025-08-06 00:00:00"
@@ -14,7 +14,7 @@ excerpt_en: "A Personal Experiment to Build My Own System"
 한국어 본문은 하단에서 보실 수 있습니다 😁
 **[한국어 본문 바로가기 →](#시작의-이유-세-가지-의도)**
 
-## 🔰 Why I Started: Three Reasons
+## 🧐 Why I Started: Three Reasons
 
 There were three clear reasons behind this project.
 
