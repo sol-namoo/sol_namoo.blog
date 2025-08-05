@@ -46,6 +46,9 @@ export const tagCategories = {
       personal: { ko: "개인", en: "Personal" },
       work: { ko: "업무", en: "Work" },
       study: { ko: "공부", en: "Study" },
+      ai: { ko: "AI", en: "AI" },
+      mvp: { ko: "MVP", en: "MVP" },
+      firebase: { ko: "Firebase", en: "Firebase" },
     },
   },
 };
