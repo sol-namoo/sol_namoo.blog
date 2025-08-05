@@ -28,6 +28,7 @@ export const loadBlogPosts = (): BlogPost[] => {
         en: data.title_en || data.title || "No Title",
       },
       date: data.date || new Date().toISOString(),
+      updatedAt: data.updatedAt, // 수정일 (선택사항)
       author: data.author || "Sol Lee",
       tags: data.tags || [],
       category: data.category || "til",

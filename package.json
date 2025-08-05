@@ -1,7 +1,7 @@
 {
-  "name": "sol-namoo-dev",
+  "name": "sol-namoo.blog",
   "version": "1.0.0",
-  "description": "Sol-namoo 개발자 포트폴리오",
+  "description": "Sol-namoo's dev blog",
   "type": "module",
   "scripts": {
     "dev": "vite",

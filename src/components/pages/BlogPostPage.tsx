@@ -3,15 +3,13 @@ import ReactMarkdown from "react-markdown";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { getBlogPostById } from "../../utils/blogUtils";
 import { getLocalizedTag } from "../../data/tagMapping";
-import { BlogPost } from "../../types";
 
 interface BlogPostPageProps {
   isDark: boolean;
   currentLang: string;
-  t: any;
 }
 
-export const BlogPostPage = ({ isDark, currentLang, t }: BlogPostPageProps) => {
+export const BlogPostPage = ({ isDark, currentLang }: BlogPostPageProps) => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
@@ -57,8 +55,15 @@ export const BlogPostPage = ({ isDark, currentLang, t }: BlogPostPageProps) => {
               </div>
               <div className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
-                <span>{new Date(post.date).toLocaleDateString()}</span>
+                <span>📅 {new Date(post.date).toLocaleDateString()}</span>
               </div>
+              {post.updatedAt && post.updatedAt !== post.date && (
+                <div className="flex items-center gap-1">
+                  <span className="text-xs text-gray-400">
+                    ✏️ {new Date(post.updatedAt).toLocaleDateString()} 수정
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         </div>

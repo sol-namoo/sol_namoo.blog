@@ -1,5 +1,5 @@
 import { Sun, Moon, Menu, X } from "lucide-react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { SolNamooText } from "../common/SolNamooText";
 import { YellowMenuStroke } from "../common/YellowMenuStroke";
 import { GreenBorderStroke } from "../common/GreenBorderStroke";
@@ -9,6 +9,8 @@ interface HeaderProps {
   setIsDark: (isDark: boolean) => void;
   currentLang: string;
   setCurrentLang: (lang: string) => void;
+  currentPage: string;
+  setCurrentPage: (page: string) => void;
   mobileMenuOpen: boolean;
   setMobileMenuOpen: (open: boolean) => void;
   t: any;
@@ -19,29 +21,25 @@ export const Header = ({
   setIsDark,
   currentLang,
   setCurrentLang,
+  currentPage,
+  setCurrentPage,
   mobileMenuOpen,
   setMobileMenuOpen,
   t,
 }: HeaderProps) => {
   const navigate = useNavigate();
-  const location = useLocation();
 
-  // URL에서 현재 페이지 추출
-  const getCurrentPageFromPath = (pathname: string) => {
-    const path = pathname.split("/")[1]; // '/blog' -> 'blog'
-    return path || "blog";
-  };
-
-  const currentPage = getCurrentPageFromPath(location.pathname);
+  // URL에서 현재 페이지 추출 (props에서 받은 currentPage 사용)
 
   const handlePageChange = (page: string) => {
+    setCurrentPage(page);
     navigate(`/${page}`);
   };
 
   return (
     <header
       className={`sticky top-0 z-50 backdrop-blur-md transition-colors relative ${
-        isDark ? "bg-slate-900/80" : "bg-white/70"
+        isDark ? "bg-gray-900/80" : "bg-white/70"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 py-4">

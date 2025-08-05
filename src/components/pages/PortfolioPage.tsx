@@ -1,18 +1,16 @@
+import { useState, useMemo } from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { Project } from "../../types";
-import { useState, useMemo } from "react";
 
 interface PortfolioPageProps {
   isDark: boolean;
   currentLang: string;
-  t: any;
   projects: Project[];
 }
 
 export const PortfolioPage = ({
   isDark,
   currentLang,
-  t,
   projects,
 }: PortfolioPageProps) => {
   const [selectedFilter, setSelectedFilter] = useState("all");

@@ -1,4 +1,3 @@
-import React from "react";
 import { AboutPage } from "../components/pages/AboutPage";
 import { Layout, useLayout } from "../components/layout/Layout";
 import { skills } from "../data";

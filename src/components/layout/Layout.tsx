@@ -29,7 +29,7 @@ interface LayoutProps {
 
 export const Layout = ({ children }: LayoutProps) => {
   const [isDark, setIsDark] = useState(false);
-  const [currentLang, setCurrentLang] = useState("ko");
+  const [currentLang, setCurrentLang] = useState("en");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -38,8 +38,6 @@ export const Layout = ({ children }: LayoutProps) => {
     const path = pathname.split("/")[1]; // '/blog' -> 'blog'
     return path || "blog";
   };
-
-  const currentPage = getCurrentPageFromPath(location.pathname);
 
   const t = texts[currentLang as keyof typeof texts];
 
@@ -62,7 +60,7 @@ export const Layout = ({ children }: LayoutProps) => {
       <div
         className={`min-h-screen transition-colors duration-300 ${
           isDark
-            ? "bg-slate-900 text-white"
+            ? "bg-gray-900 text-white"
             : "bg-gradient-to-br from-yellow-50/30 via-amber-50/20 to-green-50/30 text-gray-900"
         }`}
       >
@@ -72,6 +70,10 @@ export const Layout = ({ children }: LayoutProps) => {
           setIsDark={setIsDark}
           currentLang={currentLang}
           setCurrentLang={setCurrentLang}
+          currentPage={getCurrentPageFromPath(location.pathname)}
+          setCurrentPage={() => {
+            // 페이지 변경 로직은 상위 컴포넌트에서 처리
+          }}
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenuOpen={setMobileMenuOpen}
           t={t}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Header } from "./layout/Header";
 import { Footer } from "./layout/Footer";
@@ -6,13 +6,14 @@ import { BlogPage } from "./pages/BlogPage";
 import { PortfolioPage } from "./pages/PortfolioPage";
 import { AboutPage } from "./pages/AboutPage";
 import { texts, blogPosts, projects, skills } from "../data";
+import { BlogPost, Project, Skill } from "../types";
 
 const SolDevPortfolio = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
   const [isDark, setIsDark] = useState(false);
-  const [currentLang, setCurrentLang] = useState("ko");
+  const [currentLang, setCurrentLang] = useState("en");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("all");
 
@@ -50,7 +51,7 @@ const SolDevPortfolio = () => {
       <div
         className={`min-h-screen transition-colors duration-300 ${
           isDark
-            ? "bg-slate-900 text-white"
+            ? "bg-gray-900 text-white"
             : "bg-gradient-to-br from-yellow-50/30 via-amber-50/20 to-green-50/30 text-gray-900"
         }`}
       >
@@ -75,15 +76,13 @@ const SolDevPortfolio = () => {
               currentLang={currentLang}
               selectedCategory={selectedCategory}
               setSelectedCategory={setSelectedCategory}
-              t={t}
-              blogPosts={blogPosts}
+              blogPosts={[]} // BlogPage 내부에서 직접 로드하므로 빈 배열 전달
             />
           )}
           {currentPage === "portfolio" && (
             <PortfolioPage
               isDark={isDark}
               currentLang={currentLang}
-              t={t}
               projects={projects}
             />
           )}

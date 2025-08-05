@@ -1,4 +1,4 @@
-import { Project, Skill, Texts } from "../types";
+import { Project, Skill, Texts, BlogPost } from "../types";
 
 export const texts: Texts = {
   ko: {
@@ -14,6 +14,9 @@ export const texts: Texts = {
         retrospect: "회고",
         til: "TIL",
         review: "리뷰",
+        tutorial: "튜토리얼",
+        thought: "생각",
+        project: "프로젝트",
       },
     },
     portfolio: {
@@ -46,6 +49,9 @@ export const texts: Texts = {
         retrospect: "Retrospect",
         til: "TIL",
         review: "Review",
+        tutorial: "Tutorial",
+        thought: "Thought",
+        project: "Project",
       },
     },
     portfolio: {
@@ -69,6 +75,9 @@ export const texts: Texts = {
 
 // 빈 프로젝트 배열
 export const projects: Project[] = [];
+
+// 빈 블로그 포스트 배열 (실제로는 utils/blogUtils에서 로드됨)
+export const blogPosts: BlogPost[] = [];
 
 // 그라데이션 색상의 기술 스택 (옅은 오렌지부터 초록색까지)
 export const skills: Skill[] = [

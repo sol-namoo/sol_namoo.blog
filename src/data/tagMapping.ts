@@ -64,10 +64,11 @@ export const categoryMapping = {
 export const getLocalizedTag = (tag: string, lang: string): string => {
   // 모든 카테고리에서 태그 찾기
   for (const category of Object.values(tagCategories)) {
-    if (category.tags[tag]) {
-      return category.tags[tag][
-        lang as keyof (typeof category.tags)[typeof tag]
-      ];
+    if (category.tags && tag in category.tags) {
+      const tagData = category.tags[tag as keyof typeof category.tags];
+      if (tagData && lang in tagData) {
+        return tagData[lang as keyof typeof tagData];
+      }
     }
   }
 

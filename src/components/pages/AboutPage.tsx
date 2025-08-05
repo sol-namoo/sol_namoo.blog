@@ -1,4 +1,4 @@
-import { Palette, Mail, Github, MapPin, Linkedin } from "lucide-react";
+import { Github, MapPin, Linkedin } from "lucide-react";
 import { Skill } from "../../types";
 
 interface AboutPageProps {

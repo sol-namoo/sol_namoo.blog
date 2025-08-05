@@ -1,21 +1,24 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { loadBlogPosts } from "../../utils/blogUtils";
-import {
-  getLocalizedTag,
-  categoryMapping,
-  getAllTags,
-} from "../../data/tagMapping";
+import { getLocalizedTag, categoryMapping } from "../../data/tagMapping";
 import { BlogPost } from "../../types";
+import { loadBlogPosts } from "../../utils/blogUtils";
 
 interface BlogPageProps {
   isDark: boolean;
   currentLang: string;
-  t: any;
+  selectedCategory: string;
+  setSelectedCategory: (category: string) => void;
+  blogPosts: BlogPost[];
 }
 
-export const BlogPage = ({ isDark, currentLang, t }: BlogPageProps) => {
-  const [selectedCategory, setSelectedCategory] = useState("all");
+export const BlogPage = ({
+  isDark,
+  currentLang,
+  selectedCategory,
+  setSelectedCategory,
+  blogPosts: externalBlogPosts,
+}: BlogPageProps) => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -135,7 +138,7 @@ export const BlogPage = ({ isDark, currentLang, t }: BlogPageProps) => {
             >
               전체 ({blogPosts.length})
             </button>
-            {availableCategories.map((category) => {
+            {availableCategories.map((category: string) => {
               const count = blogPosts.filter(
                 (post) => post.category === category
               ).length;
@@ -216,61 +219,58 @@ export const BlogPage = ({ isDark, currentLang, t }: BlogPageProps) => {
             }`}
           >
             <div
-              className={`h-24 sm:h-32 flex items-center justify-center text-2xl sm:text-4xl ${
+              className={`h-24 sm:h-32 flex items-center justify-center text-2xl sm:text-4xl relative ${
                 isDark ? "bg-gray-700/30" : "bg-gray-50/80"
               }`}
             >
+              {/* 카테고리 배지 - 왼쪽 상단 */}
+              <span
+                className={`absolute top-2 left-2 px-2 py-1 rounded text-xs font-medium ${
+                  post.category === "retrospect"
+                    ? isDark
+                      ? "bg-purple-900/80 text-purple-300"
+                      : "bg-purple-100/90 text-purple-800"
+                    : post.category === "til"
+                    ? isDark
+                      ? "bg-blue-900/80 text-blue-300"
+                      : "bg-blue-100/90 text-blue-800"
+                    : post.category === "review"
+                    ? isDark
+                      ? "bg-green-900/80 text-green-300"
+                      : "bg-green-100/90 text-green-800"
+                    : post.category === "tutorial"
+                    ? isDark
+                      ? "bg-orange-900/80 text-orange-300"
+                      : "bg-orange-100/90 text-orange-800"
+                    : post.category === "thought"
+                    ? isDark
+                      ? "bg-pink-900/80 text-pink-300"
+                      : "bg-pink-100/90 text-pink-800"
+                    : post.category === "project"
+                    ? isDark
+                      ? "bg-indigo-900/80 text-indigo-300"
+                      : "bg-indigo-100/90 text-indigo-800"
+                    : isDark
+                    ? "bg-gray-900/80 text-gray-300"
+                    : "bg-gray-100/90 text-gray-800"
+                }`}
+              >
+                {categoryMapping[post.category as keyof typeof categoryMapping]
+                  ? categoryMapping[
+                      post.category as keyof typeof categoryMapping
+                    ][currentLang as "ko" | "en"]
+                  : post.category}
+              </span>
               {post.emoji || "📝"}
             </div>
 
             <div className="p-4 sm:p-6">
-              <div className="flex items-center gap-2 mb-2">
-                <h3 className="font-bold text-base sm:text-lg">
-                  {post.title &&
-                  post.title[currentLang as keyof typeof post.title]
-                    ? post.title[currentLang as keyof typeof post.title]
-                    : "제목 없음"}
-                </h3>
-                <span
-                  className={`px-2 py-1 rounded text-xs font-medium ${
-                    post.category === "retrospect"
-                      ? isDark
-                        ? "bg-purple-900/50 text-purple-300"
-                        : "bg-purple-100 text-purple-800"
-                      : post.category === "til"
-                      ? isDark
-                        ? "bg-blue-900/50 text-blue-300"
-                        : "bg-blue-100 text-blue-800"
-                      : post.category === "review"
-                      ? isDark
-                        ? "bg-green-900/50 text-green-300"
-                        : "bg-green-100 text-green-800"
-                      : post.category === "tutorial"
-                      ? isDark
-                        ? "bg-orange-900/50 text-orange-300"
-                        : "bg-orange-100 text-orange-800"
-                      : post.category === "thought"
-                      ? isDark
-                        ? "bg-pink-900/50 text-pink-300"
-                        : "bg-pink-100 text-pink-800"
-                      : post.category === "project"
-                      ? isDark
-                        ? "bg-indigo-900/50 text-indigo-300"
-                        : "bg-indigo-100 text-indigo-800"
-                      : isDark
-                      ? "bg-gray-900/50 text-gray-300"
-                      : "bg-gray-100 text-gray-800"
-                  }`}
-                >
-                  {categoryMapping[
-                    post.category as keyof typeof categoryMapping
-                  ]
-                    ? categoryMapping[
-                        post.category as keyof typeof categoryMapping
-                      ][currentLang as "ko" | "en"]
-                    : post.category}
-                </span>
-              </div>
+              <h3 className="font-bold text-base sm:text-lg mb-2">
+                {post.title &&
+                post.title[currentLang as keyof typeof post.title]
+                  ? post.title[currentLang as keyof typeof post.title]
+                  : "제목 없음"}
+              </h3>
               <p
                 className={`text-xs sm:text-sm mb-4 ${
                   isDark ? "text-gray-400" : "text-gray-600"
@@ -298,11 +298,19 @@ export const BlogPage = ({ isDark, currentLang, t }: BlogPageProps) => {
               </div>
               <div className="flex justify-between items-center text-xs text-gray-500">
                 <span>{post.author || "작성자"}</span>
-                <span>
-                  {post.date
-                    ? new Date(post.date).toLocaleDateString()
-                    : "날짜 없음"}
-                </span>
+                <div className="flex flex-col items-end">
+                  <span>
+                    📅{" "}
+                    {post.date
+                      ? new Date(post.date).toLocaleDateString()
+                      : "날짜 없음"}
+                  </span>
+                  {post.updatedAt && post.updatedAt !== post.date && (
+                    <span className="text-xs text-gray-400">
+                      ✏️ {new Date(post.updatedAt).toLocaleDateString()} 수정
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
           </div>
