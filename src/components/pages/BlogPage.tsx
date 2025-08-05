@@ -94,7 +94,9 @@ export const BlogPage = ({
         <div
           className={`text-lg ${isDark ? "text-gray-300" : "text-gray-600"}`}
         >
-          블로그 포스트를 불러오는 중...
+          {currentLang === "ko"
+            ? "블로그 포스트를 불러오는 중..."
+            : "Loading blog posts..."}
         </div>
       </div>
     );
@@ -121,7 +123,7 @@ export const BlogPage = ({
               isDark ? "text-gray-300" : "text-gray-700"
             }`}
           >
-            카테고리
+            {currentLang === "ko" ? "카테고리" : "Categories"}
           </h3>
           <div className="flex flex-wrap gap-2">
             <button
@@ -136,7 +138,7 @@ export const BlogPage = ({
                   : "bg-gray-200 text-gray-700 hover:bg-gray-300"
               }`}
             >
-              전체 ({blogPosts.length})
+              {currentLang === "ko" ? "전체" : "All"} ({blogPosts.length})
             </button>
             {availableCategories.map((category: string) => {
               const count = blogPosts.filter(
@@ -175,7 +177,7 @@ export const BlogPage = ({
               isDark ? "text-gray-300" : "text-gray-700"
             }`}
           >
-            태그
+            {currentLang === "ko" ? "태그" : "Tags"}
           </h3>
           <div className="flex flex-wrap gap-2">
             {availableTags.map((tag) => (
@@ -203,7 +205,11 @@ export const BlogPage = ({
       <p
         className={`mb-6 text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}
       >
-        {filteredPosts.length}개의 포스트
+        {currentLang === "ko"
+          ? `${filteredPosts.length}개의 포스트`
+          : `${filteredPosts.length} post${
+              filteredPosts.length !== 1 ? "s" : ""
+            }`}
       </p>
 
       {/* 블로그 포스트 목록 */}
@@ -269,7 +275,9 @@ export const BlogPage = ({
                 {post.title &&
                 post.title[currentLang as keyof typeof post.title]
                   ? post.title[currentLang as keyof typeof post.title]
-                  : "제목 없음"}
+                  : currentLang === "ko"
+                  ? "제목 없음"
+                  : "No Title"}
               </h3>
               <p
                 className={`text-xs sm:text-sm mb-4 ${
@@ -279,7 +287,9 @@ export const BlogPage = ({
                 {post.excerpt &&
                 post.excerpt[currentLang as keyof typeof post.excerpt]
                   ? post.excerpt[currentLang as keyof typeof post.excerpt]
-                  : "요약 없음"}
+                  : currentLang === "ko"
+                  ? "요약 없음"
+                  : "No excerpt"}
               </p>
               <div className="flex flex-wrap gap-1 sm:gap-2 mb-4">
                 {post.tags &&
@@ -297,17 +307,22 @@ export const BlogPage = ({
                   ))}
               </div>
               <div className="flex justify-between items-center text-xs text-gray-500">
-                <span>{post.author || "작성자"}</span>
+                <span>
+                  {post.author || (currentLang === "ko" ? "작성자" : "Author")}
+                </span>
                 <div className="flex flex-col items-end">
                   <span>
                     📅{" "}
                     {post.date
                       ? new Date(post.date).toLocaleDateString()
-                      : "날짜 없음"}
+                      : currentLang === "ko"
+                      ? "날짜 없음"
+                      : "No date"}
                   </span>
                   {post.updatedAt && post.updatedAt !== post.date && (
                     <span className="text-xs text-gray-400">
-                      ✏️ {new Date(post.updatedAt).toLocaleDateString()} 수정
+                      ✏️ {new Date(post.updatedAt).toLocaleDateString()}{" "}
+                      {currentLang === "ko" ? "수정" : "updated"}
                     </span>
                   )}
                 </div>
