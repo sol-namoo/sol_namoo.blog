@@ -1,6 +1,6 @@
 ---
 id: "monthlygrow-devlog-part1"
-emoji: "🎮 📅 🔄"
+emoji: "📅"
 title_ko: "monthlyGrow 개발기 ①"
 title_en: "monthlyGrow Devlog ①"
 date: "2025-08-06 00:00:00"
@@ -12,7 +12,8 @@ excerpt_en: "A Personal Experiment to Build My Own System"
 ---
 
 한국어 본문은 하단에서 보실 수 있습니다 😁
-**[한국어 본문 바로가기 →](#시작의-이유-세-가지-의도)**
+
+---
 
 ## 🧐 Why I Started: Three Reasons
 
@@ -139,7 +140,7 @@ But it feels good to write this reflection—on building a reflection app.
 
 ---
 
-## 🔰 시작의 이유: 세 가지 의도
+## 🧐 시작의 이유: 세 가지 의도
 
 이 프로젝트를 시작한 이유는 분명했다.
 
@@ -153,7 +154,7 @@ But it feels good to write this reflection—on building a reflection app.
 3. **회사에서 못 해본 걸 전부 해보고 싶었다.**  
    회사에서 몇 가지의 도메인을 계속 맡았다 보니, 해당 도메인의 구조는 꿰고 있었지만 전반적인 구조 설계나 인증 설계, 데이터 모델링 등을 직접 해 보지는 않았다. 이번에는 뭐가 됐든 내가 원하는 기술과 라이브러리를 마음껏 써보고 싶었다.
 
-### 🎮 아이디어는 '프린세스 메이커'에서 시작됐다
+## 🎮 아이디어는 '프린세스 메이커'에서 시작됐다
 
 어느 날, 오래된 육성 시뮬레이션 게임을 하다가 문득 이런 생각이 들었다.
 

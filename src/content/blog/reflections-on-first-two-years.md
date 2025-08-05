@@ -12,7 +12,8 @@ excerpt_en: "Looking back on my first 2 years as a developer, I've compiled what
 ---
 
 한국어 본문은 하단에서 보실 수 있습니다 😁
-**[한국어 본문 바로가기 →](#2년-간의-근무에-대한-회고)**
+
+---
 
 ## **Reflections on Two Years of Work**
 
