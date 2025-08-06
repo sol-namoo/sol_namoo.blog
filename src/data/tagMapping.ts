@@ -53,16 +53,6 @@ export const tagCategories = {
   },
 };
 
-// 카테고리 매핑
-export const categoryMapping = {
-  retrospect: { ko: "회고", en: "Retrospect" },
-  til: { ko: "TIL", en: "TIL" },
-  review: { ko: "리뷰", en: "Review" },
-  tutorial: { ko: "튜토리얼", en: "Tutorial" },
-  thought: { ko: "생각", en: "Thought" },
-  project: { ko: "프로젝트", en: "Project" },
-};
-
 // 기존 함수 유지 (하위 호환성)
 export const getLocalizedTag = (tag: string, lang: string): string => {
   // 모든 카테고리에서 태그 찾기

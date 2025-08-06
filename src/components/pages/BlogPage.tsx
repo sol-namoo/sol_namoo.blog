@@ -1,8 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { getLocalizedTag, categoryMapping } from "../../data/tagMapping";
+import { getLocalizedTag } from "../../data/tagMapping";
 import { BlogPost } from "../../types";
 import { loadBlogPosts } from "../../utils/blogUtils";
+import { getCategoryLabel } from "../../data";
 
 interface BlogPageProps {
   isDark: boolean;
@@ -159,11 +160,10 @@ export const BlogPage = ({
                       : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                   }`}
                 >
-                  {categoryMapping[category as keyof typeof categoryMapping]
-                    ? categoryMapping[category as keyof typeof categoryMapping][
-                        currentLang as "ko" | "en"
-                      ]
-                    : category}{" "}
+                  {getCategoryLabel(
+                    category as any,
+                    currentLang as "ko" | "en"
+                  )}{" "}
                   ({count})
                 </button>
               );
@@ -262,11 +262,7 @@ export const BlogPage = ({
                     : "bg-gray-100/90 text-gray-800"
                 }`}
               >
-                {categoryMapping[post.category as keyof typeof categoryMapping]
-                  ? categoryMapping[
-                      post.category as keyof typeof categoryMapping
-                    ][currentLang as "ko" | "en"]
-                  : post.category}
+                {getCategoryLabel(post.category, currentLang as "ko" | "en")}
               </span>
               {post.emoji || "📝"}
             </div>
@@ -292,12 +288,12 @@ export const BlogPage = ({
                   ? "요약 없음"
                   : "No excerpt"}
               </p>
-              <div className="flex flex-wrap gap-1 sm:gap-2 mb-4">
+              <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 min-h-[1.5rem]">
                 {post.tags &&
                   post.tags.map((tag) => (
                     <span
                       key={tag}
-                      className={`px-2 py-1 rounded text-xs font-medium ${
+                      className={`px-2 py-1 rounded text-xs font-medium whitespace-nowrap ${
                         isDark
                           ? "bg-green-900/50 text-green-300"
                           : "bg-green-100 text-green-800"

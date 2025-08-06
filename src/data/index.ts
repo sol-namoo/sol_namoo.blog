@@ -1,4 +1,4 @@
-import { Project, Skill, Texts, BlogPost } from "../types";
+import { Project, Skill, Texts, BlogPost, BlogCategory } from "../types";
 
 export const texts: Texts = {
   ko: {
@@ -78,6 +78,14 @@ export const projects: Project[] = [];
 
 // 빈 블로그 포스트 배열 (실제로는 utils/blogUtils에서 로드됨)
 export const blogPosts: BlogPost[] = [];
+
+// 카테고리 맵핑 헬퍼 함수
+export const getCategoryLabel = (
+  category: BlogCategory,
+  lang: "ko" | "en"
+): string => {
+  return texts[lang].blog.categories[category] || category;
+};
 
 // 그라데이션 색상의 기술 스택 (옅은 오렌지부터 초록색까지)
 export const skills: Skill[] = [

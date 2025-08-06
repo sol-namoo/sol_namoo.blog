@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { getBlogPostById } from "../../utils/blogUtils";
 import { getLocalizedTag } from "../../data/tagMapping";
+import { texts, getCategoryLabel } from "../../data";
 
 interface BlogPostPageProps {
   isDark: boolean;
@@ -69,60 +70,61 @@ export const BlogPostPage = ({ isDark, currentLang }: BlogPostPageProps) => {
         </div>
 
         {/* 카테고리 및 태그 */}
-        <div className="flex items-center gap-2 mb-6">
-          <span
-            className={`px-3 py-1 rounded-full text-sm font-medium ${
-              post.category === "retrospect"
-                ? isDark
-                  ? "bg-purple-900/50 text-purple-300"
-                  : "bg-purple-100 text-purple-800"
-                : post.category === "til"
-                ? isDark
-                  ? "bg-blue-900/50 text-blue-300"
-                  : "bg-blue-100 text-blue-800"
-                : isDark
-                ? "bg-green-900/50 text-green-300"
-                : "bg-green-100 text-green-800"
-            }`}
-          >
-            {post.category === "retrospect"
-              ? currentLang === "ko"
-                ? "회고"
-                : "Retrospect"
-              : post.category === "til"
-              ? "TIL"
-              : currentLang === "ko"
-              ? "리뷰"
-              : "Review"}
-          </span>
-          <div className="flex items-center gap-1">
-            <Tag className="w-4 h-4 text-gray-400" />
-            <div className="flex gap-2">
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className={`px-2 py-1 rounded text-xs font-medium ${
-                    isDark
-                      ? "bg-gray-700 text-gray-300"
-                      : "bg-gray-200 text-gray-700"
-                  }`}
-                >
-                  {getLocalizedTag(tag, currentLang)}
-                </span>
-              ))}
+        <div className="mb-6">
+          <div className="flex items-start gap-2 mb-3">
+            <span
+              className={`px-3 py-1 rounded-full text-sm font-medium whitespace-nowrap ${
+                post.category === "retrospect"
+                  ? isDark
+                    ? "bg-purple-900/50 text-purple-300"
+                    : "bg-purple-100 text-purple-800"
+                  : post.category === "til"
+                  ? isDark
+                    ? "bg-blue-900/50 text-blue-300"
+                    : "bg-blue-100 text-blue-800"
+                  : isDark
+                  ? "bg-green-900/50 text-green-300"
+                  : "bg-green-100 text-green-800"
+              }`}
+            >
+              {getCategoryLabel(post.category, currentLang as "ko" | "en")}
+            </span>
+            <div className="flex items-center gap-1 flex-1 min-w-0">
+              <Tag className="w-4 h-4 text-gray-400 flex-shrink-0" />
+              <div className="flex flex-wrap gap-2 min-w-0">
+                {post.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className={`px-2 py-1 rounded text-xs font-medium whitespace-nowrap ${
+                      isDark
+                        ? "bg-gray-700 text-gray-300"
+                        : "bg-gray-200 text-gray-700"
+                    }`}
+                  >
+                    {getLocalizedTag(tag, currentLang)}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
         {/* 요약 */}
         <p
-          className={`text-lg mb-8 leading-relaxed ${
+          className={`text-lg mb-6 leading-relaxed ${
             isDark ? "text-gray-300" : "text-gray-600"
           }`}
         >
           {post.excerpt[currentLang as keyof typeof post.excerpt]}
         </p>
       </article>
+
+      {/* 구분선 */}
+      <div
+        className={`w-full h-px mb-14 ${
+          isDark ? "bg-gray-700" : "bg-gray-200"
+        }`}
+      />
 
       {/* 마크다운 콘텐츠 */}
       <div
