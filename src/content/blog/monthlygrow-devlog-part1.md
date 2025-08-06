@@ -21,10 +21,9 @@ excerpt_en: "A Personal Experiment to Build My Own System"
 There were three clear reasons behind this project.
 
 1. **I wanted a planning and reflection system that truly fits me.**  
-    People who plan well, stay organized, and reflect regularly seem admirable—and I wanted to be like them.  
-    I had tried many tools, but for someone like me who is more spontaneous, most productivity apps were either too rigid or too loose.  
-    I could never maintain the flow, and I always failed to follow through with proper retrospectives.
-   =
+   People who plan well, stay organized, and reflect regularly seem admirable—and I wanted to be like them.  
+   I had tried many tools, but for someone like me who is more spontaneous, most productivity apps were either too rigid or too loose.  
+   I could never maintain the flow, and I always failed to follow through with proper retrospectives.
 2. **I needed something I could actually show outside of work.**  
    I spent over two years building the main product at my first company, but it was an internal tool—none of it was visible or sharable as a portfolio.  
    I wanted to build something of similar complexity and structure to demonstrate the work I had done.
