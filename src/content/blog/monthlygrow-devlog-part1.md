@@ -11,8 +11,8 @@ excerpt_ko: "'나에게 딱 맞는 계획-회고 시스템'을 만들기 위한 
 excerpt_en: "A Personal Experiment to Build My Own System"
 ---
 
-- Here is the link to [monthlyGrow!](https://monthly-grow.vercel.app/)
 - Here is the link to [github repo!](https://github.com/sol-namoo/monthlyGrow)
+- Here is the link to [monthlyGrow!](https://monthly-grow.vercel.app/) and you can login with this sample account: sample@sample.com / sample1234!
 - 한국어 본문은 하단에서 보실 수 있습니다 😁
 
 ---
