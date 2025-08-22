@@ -1,9 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom";
-import ReactMarkdown from "react-markdown";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { getBlogPostById } from "../../utils/blogUtils";
 import { getLocalizedTag } from "../../data/tagMapping";
 import { texts, getCategoryLabel } from "../../data";
+import MDXProvider from "../../mdx/MDXProvider";
+import { lazy, Suspense, useMemo } from "react";
 
 interface BlogPostPageProps {
   isDark: boolean;
@@ -25,6 +26,12 @@ export const BlogPostPage = ({ isDark, currentLang }: BlogPostPageProps) => {
     navigate("/blog");
     return null;
   }
+
+  // MDX 컴포넌트 lazy 로더로 감싸기
+  const LazyPost = useMemo(() => {
+    if (!post.loadComponent) return null;
+    return lazy(post.loadComponent);
+  }, [post.loadComponent]);
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -126,7 +133,7 @@ export const BlogPostPage = ({ isDark, currentLang }: BlogPostPageProps) => {
         }`}
       />
 
-      {/* 마크다운 콘텐츠 */}
+      {/* MDX 콘텐츠 본문*/}
       <div
         className={`prose prose-lg max-w-none ${
           isDark
@@ -134,7 +141,17 @@ export const BlogPostPage = ({ isDark, currentLang }: BlogPostPageProps) => {
             : "prose-headings:text-gray-900 prose-p:text-gray-700 prose-strong:text-amber-700 prose-a:text-blue-600"
         }`}
       >
-        <ReactMarkdown>{post.content}</ReactMarkdown>
+        {LazyPost ? (
+          <Suspense
+            fallback={<div style={{ padding: "2rem 0" }}>Loading...</div>}
+          >
+            <MDXProvider>
+              <LazyPost />
+            </MDXProvider>
+          </Suspense>
+        ) : (
+          <div className="text-center py-8">Unable to load content.</div>
+        )}
       </div>
     </div>
   );

@@ -1,3 +1,5 @@
+import type { ComponentType } from "react";
+
 export interface BlogPost {
   id: string;
   emoji: string;
@@ -15,12 +17,17 @@ export interface BlogPost {
     | "review"
     | "tutorial"
     | "thought"
-    | "project";
+    | "project"
+    | "devlog";
   excerpt: {
     ko: string;
     en: string;
   };
-  content: string; // 마크다운 본문
+  component?: ComponentType<any>; // Eager version
+  loadComponent?: () => Promise<{ default: ComponentType<any> }>; // (Hybrid/Lazy에서 사용)
+  slug?: string;
+  path?: string;
+  content?: string; // 마크다운 본문 (MDX 사용 시 선택사항)
 }
 
 export interface Project {
@@ -55,7 +62,8 @@ export type BlogCategory =
   | "review"
   | "tutorial"
   | "thought"
-  | "project";
+  | "project"
+  | "devlog";
 
 // 프로젝트 타입 정의
 export type ProjectType = "work" | "side" | "personal";
@@ -110,6 +118,7 @@ export interface Texts {
         tutorial?: string;
         thought?: string;
         project?: string;
+        devlog?: string;
       };
     };
     portfolio: {
@@ -144,6 +153,7 @@ export interface Texts {
         tutorial: string;
         thought: string;
         project: string;
+        devlog: string;
       };
     };
     portfolio: {

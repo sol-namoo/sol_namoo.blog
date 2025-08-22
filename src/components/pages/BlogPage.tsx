@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { getLocalizedTag } from "../../data/tagMapping";
 import { BlogPost } from "../../types";
@@ -22,6 +22,7 @@ export const BlogPage = ({
 }: BlogPageProps) => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -31,19 +32,42 @@ export const BlogPage = ({
       // 실제 마크다운 파일에서 블로그 포스트 로드
       const posts = loadBlogPosts();
       console.log("BlogPage - blogPosts:", posts);
-
-      if (posts.length === 0) {
-        setError("블로그 포스트를 찾을 수 없습니다.");
-      } else {
-        setBlogPosts(posts);
-      }
+      console.log("BlogPage - posts length:", posts.length);
+      setBlogPosts(posts);
+      setFilteredPosts(posts);
     } catch (err) {
       console.error("블로그 포스트 로딩 오류:", err);
       setError("블로그 포스트를 불러오는 중 오류가 발생했습니다.");
     } finally {
       setIsLoading(false);
+      console.log("BlogPage - isLoading set to false");
     }
   }, []);
+
+  // 필터링 로직
+  useEffect(() => {
+    console.log("Filtering posts...");
+    console.log("blogPosts:", blogPosts);
+    console.log("selectedCategory:", selectedCategory);
+    console.log("selectedTags:", selectedTags);
+
+    let filtered = blogPosts;
+
+    // 카테고리 필터링
+    if (selectedCategory !== "all") {
+      filtered = filtered.filter((post) => post.category === selectedCategory);
+    }
+
+    // 태그 필터링
+    if (selectedTags.length > 0) {
+      filtered = filtered.filter((post) =>
+        selectedTags.some((tag) => post.tags.includes(tag))
+      );
+    }
+
+    console.log("Filtered posts:", filtered);
+    setFilteredPosts(filtered);
+  }, [blogPosts, selectedCategory, selectedTags, currentLang]);
 
   // 실제 포스트가 있는 카테고리만 계산
   const availableCategories = useMemo(() => {
@@ -60,21 +84,6 @@ export const BlogPage = ({
     return Array.from(tags);
   }, [blogPosts]);
 
-  const filteredPosts = blogPosts.filter((post) => {
-    // 카테고리 필터
-    if (selectedCategory !== "all" && post.category !== selectedCategory) {
-      return false;
-    }
-
-    // 태그 필터
-    if (selectedTags.length > 0) {
-      const postTags = post.tags || [];
-      return selectedTags.every((tag) => postTags.includes(tag));
-    }
-
-    return true;
-  });
-
   const handlePostClick = (postId: string) => {
     navigate(`/blog/${postId}`);
   };
@@ -88,6 +97,15 @@ export const BlogPage = ({
       prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
     );
   };
+
+  console.log(
+    "BlogPage render - isLoading:",
+    isLoading,
+    "error:",
+    error,
+    "filteredPosts.length:",
+    filteredPosts.length
+  );
 
   if (isLoading) {
     return (

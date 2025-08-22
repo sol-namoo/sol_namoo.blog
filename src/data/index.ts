@@ -17,6 +17,7 @@ export const texts: Texts = {
         tutorial: "튜토리얼",
         thought: "생각",
         project: "프로젝트",
+        devlog: "개발기",
       },
     },
     portfolio: {
@@ -52,6 +53,7 @@ export const texts: Texts = {
         tutorial: "Tutorial",
         thought: "Thought",
         project: "Project",
+        devlog: "Devlog",
       },
     },
     portfolio: {

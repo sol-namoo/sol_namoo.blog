@@ -1,45 +1,52 @@
-import matter from "gray-matter";
-import { BlogPost } from "../types";
+// utils/blogUtils.ts
+import type { ComponentType } from "react";
+import type { BlogPost } from "../types";
 
-// 블로그 포스트들을 한 번에 import
-import { blogPosts } from "../content/blog";
+// 1) 메타만 즉시 로드 (named export만 import)
+const metaModules = import.meta.glob("../content/blog/*.mdx", {
+  eager: true,
+  import: "meta",
+}) as Record<string, any>;
+
+// 2) 컴포넌트는 지연 로드 (필요할 때 동적 import)
+const componentModules = import.meta.glob("../content/blog/*.mdx"); // () => Promise<Module>
 
 export const loadBlogPosts = (): BlogPost[] => {
   const posts: BlogPost[] = [];
 
-  // 모든 블로그 파일 처리
-  for (const { path, content } of blogPosts) {
-    try {
-      console.log(`처리 중인 파일: ${path}`);
+  for (const [path, meta] of Object.entries(metaModules)) {
+    const slug = path.split("/").pop()!.replace(".mdx", "");
 
-      const { data, content: markdownContent } = matter(content);
-
-      const post: BlogPost = {
-        id: data.id,
-        emoji: data.emoji || "📝",
-        title: {
-          ko: data.title_ko || data.title || "제목 없음",
-          en: data.title_en || data.title || "No Title",
-        },
-        date: data.date || new Date().toISOString(),
-        updatedAt: data.updatedAt,
-        author: data.author || "Sol Lee",
-        tags: data.tags || [],
-        category: data.category || "til",
-        excerpt: {
-          ko: data.excerpt_ko || data.excerpt || "요약 없음",
-          en: data.excerpt_en || data.excerpt || "No excerpt",
-        },
-        content: markdownContent || "",
-      };
-
-      posts.push(post);
-    } catch (error) {
-      console.error(`${path} 파싱 오류:`, error);
+    // 해당 파일의 컴포넌트 importer 함수 찾기
+    const importer = componentModules[path]; // ()=>Promise<{ default: Component }>
+    if (!importer) {
+      // 경로가 다르면 실패하므로 한 번 콘솔에서 확인해보자
+      console.warn("MDX importer not found for", path);
     }
+
+    posts.push({
+      id: meta.id || slug,
+      emoji: meta.emoji || "📝",
+      title: {
+        ko: meta.title_ko || meta.title || "제목 없음",
+        en: meta.title_en || meta.title || "No Title",
+      },
+      date: meta.date || new Date().toISOString(),
+      updatedAt: meta.updatedAt,
+      author: meta.author || "Sol Lee",
+      tags: meta.tags || [],
+      category: meta.category || "til",
+      excerpt: {
+        ko: meta.excerpt_ko || meta.excerpt || "요약 없음",
+        en: meta.excerpt_en || meta.excerpt || "No excerpt",
+      },
+      slug,
+      path,
+      // 🔽 상세 페이지에서 사용할 지연 로더
+      loadComponent: importer as () => Promise<{ default: ComponentType<any> }>,
+    });
   }
 
-  // 날짜순으로 정렬 (최신순)
   return posts.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );

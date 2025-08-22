@@ -1,0 +1,245 @@
+export const meta = {
+  id: "monthlygrow-devlog-part2",
+  emoji: "🧭",
+  title_ko: "monthlyGrow 개발기 ②",
+  title_en: "monthlyGrow Devlog ②",
+  date: "2025-08-21 00:00:00",
+  author: "Sol Lee",
+  tags: ["career", "learning", "challenge", "firebase", "ai", "para", "okr"],
+  category: "devlog",
+  excerpt_ko: "AI 자동 계획, 구조 단순화, 온보딩, 다국어화까지.",
+  excerpt_en: "AI auto-plan, model simplification, onboarding, bilingual UI.",
+};
+
+import { Img, ImgRow } from "../../mdx/MDXProvider";
+
+한국어 본문은 하단에서 보실 수 있습니다 😁
+
+---
+
+## tl;dr
+
+- Added **AI auto-plan generation** with Claude API, using type definitions and guiding prompts.
+- Simplified the tangled Loop–Project relationship into a separate **Monthly OKR** and **Project** model.
+- Introduced an **onboarding flow** to explain PARA + Monthly to new users.
+- First attempt at **bilingual UI (KR/EN)**, though current screenshots still show a mix.
+- Began with FOMO, but ended up with genuine curiosity to grow AI literacy.
+
+---
+
+## 🪄 AI auto-plan generation
+
+In the MVP, every goal and task had to be typed in manually. It worked, but the repetitive input was tedious and created a steep learning curve for new users. In this update, I finally added **AI auto-plan generation**.
+
+To make it possible, I defined type information for PARA items and wrote a guiding prompt explaining how user inputs — such as goals, available time, and difficulty — should be turned into tasks and projects. Claude 3.5 Sonnet then returned structured JSON, which was stored directly into Firestore.
+
+Seeing a full project with tasks appear from a single sentence was a reward for all the back-and-forth I had done between planning and database design.
+
+<ImgRow className="img-row">
+  <Img
+    src="/images/monthlygrow2/ai-plan-top.webp"
+    alt="AI plan generation screen (top)"
+    width="400"
+  />
+  <Img
+    src="/images/monthlygrow2/ai-plan-bottom.webp"
+    alt="AI plan generation screen (bottom)"
+    width="400"
+  />
+</ImgRow>
+
+---
+
+## 🌀 Simplifying loops and projects
+
+Originally, projects lived inside “monthly loops.” On paper it looked neat, but in practice it was confusing. For example, if a project lasts three months and has thirty tasks, how many should be counted toward this month’s loop? At what point could I call it “successful”?
+
+This structure only grew more complex. In the end, I removed loops entirely and redefined them as a separate **Monthly** concept.
+
+- Projects simply track their own long-term completion.
+- Monthly acts like an OKR space, where I can write a sentence such as “Workout 10 times” and check it off.
+
+Separating the two reduced data complexity and gave users far more freedom.
+
+<ImgRow className="img-row">
+  <Img src="/images/monthlygrow2/home.webp" alt="Home screen" width="400" />
+  <Img
+    src="/images/monthlygrow2/monthly-keyresults.webp"
+    alt="Monthly screen – Key Results tab"
+    width="400"
+  />
+</ImgRow>
+
+---
+
+## 📚 Learning backend by doing
+
+As a frontend developer, this update pushed me into new territory. I had worked in teams building AWS-based backends before, but my knowledge of AWS Lambda or NoSQL was limited to what I overheard.
+
+Working with Cursor in Firestore, I had to adjust query conditions and indexing myself. I finally understood what my backend teammates used to describe — the constraints, the trade-offs, the points where indexing matters. I wasn’t writing every line myself, but being able to control what gets indexed and how data is filtered before reaching the client felt satisfying.
+
+---
+
+## 🌱 Onboarding
+
+Because monthlyGrow combines PARA with Monthly OKR, I knew first-time users would face a barrier. To lower it, I added an **onboarding page** that appears after signup and can be revisited anytime. It explains PARA, Monthly, and how the two fit together.
+
+<ImgRow className="img-row">
+  <Img
+    src="/images/monthlygrow2/onboarding.webp"
+    alt="Onboarding first page"
+    width="400"
+  />
+  <Img
+    src="/images/monthlygrow2/settings.webp"
+    alt="Settings page"
+    width="400"
+  />
+</ImgRow>
+---
+
+## 🌍 First bilingual attempt
+
+Another experiment was bilingual UI. I rendered both Korean and English in the interface for the first time. The current screenshots still show a mixed state, but it gave me a new appreciation for localization and how much it matters in user experience.
+
+---
+
+## 📸 More screenshots
+
+To help users track tasks and reflect on progress by month, I added supporting UIs.
+
+<ImgRow className="img-row">
+  <Img
+    src="/images/monthlygrow2/home-today.webp"
+    alt="Home screen – Today’s tasks tab"
+    width="400"
+  />
+  <Img
+    src="/images/monthlygrow2/home-annual.webp"
+    alt="Home screen – Annual dashboard tab"
+    width="400"
+  />
+</ImgRow>
+
+---
+
+## ✅ Reflection
+
+With this update, monthlyGrow evolved from a manual MVP into a second version with AI automation, simplified models, onboarding, and bilingual UI.
+
+At first I felt FOMO — as if not learning AI fast enough would leave me behind. But building these features turned into genuine enjoyment, and I came out wanting to deepen my AI literacy. In the past I only designed projects within what I already knew, but this time I experienced how AI can enable top-down self-learning.
+
+Once my urgent job transition is settled, I want to gather more feedback and eventually release it as a real web app. For me, monthlyGrow is more than a toy project — it’s a record of growth and learning. I don’t know how far this journey will go, but it leaves me looking forward to the next step.
+
+---
+
+## tl;dr
+
+- Claude API와 타입 정의, 프롬프트 설계를 통해 **AI 자동 계획 생성**을 넣었다.
+- 꼬여 있던 루프–프로젝트 관계를 버리고, **Monthly와 Project를 분리**했다.
+- 처음 쓰는 사용자를 위해 **온보딩 페이지**를 추가했다.
+- **다국어 UI**도 처음 시도했지만, 현재 캡쳐는 국영문이 섞여 있다.
+- FOMO에서 시작했지만, 이제는 진짜로 AI 리터러시를 배우고 싶어졌다.
+
+---
+
+## 🪄 AI로 자동 계획을 만들다
+
+MVP 시절에는 목표와 태스크를 전부 직접 입력해야 했다. 기능은 있었지만, 매번 할 일을 옮겨 적는 과정은 귀찮고 사용자에게 러닝 커브가 있었다. 그러나 이번 업데이트에서는 드디어 **AI 자동 계획 생성 기능**을 넣었다.
+
+이를 위해 앱 내 PARA 아이템마다 정의된 타입 정보를 제공하고, 사용자가 입력한 목표·투자 가능한 시간·난이도 등을 어떻게 태스크와 프로젝트로 조합할지 설명하는 가이드 프롬프트를 작성했다. Claude 3.5 Sonnet은 구조화된 JSON을 반환했고, 그대로 Firestore에 저장되었다.
+
+한 문장으로 입력했는데 전체 프로젝트와 태스크가 자동으로 생성되는 순간, 그동안 기획과 데이터 구조를 오가며 수정을 거듭한 보람을 느꼈다.
+
+<ImgRow className="img-row">
+  <Img
+    src="/images/monthlygrow2/ai-plan-top.webp"
+    alt="AI 계획 생성 페이지 상단"
+    width="400"
+  />
+  <Img
+    src="/images/monthlygrow2/ai-plan-bottom.webp"
+    alt="AI 계획 생성 페이지 하단"
+    width="400"
+  />
+</ImgRow>
+
+---
+
+## 🌀 루프와 프로젝트를 단순화하다
+
+초기 구조에서는 프로젝트가 '월간 루프' 안에 들어 있었다. 이론상으론 깔끔했지만, 실제로는 불편했다. 예를 들어 3개월짜리 프로젝트에 태스크가 30개라면 이번 달 루프에서 몇 개를 목표로 삼고, 몇 개를 달성했을 때 성공이라고 말할 수 있을까?
+
+이 구조는 점점 복잡해졌고, 결국 '월간 루프'에서 루프 개념을 잘라내고 ‘먼슬리’라는 개념으로 재정의했다.
+
+- 프로젝트는 긴 호흡의 완주 여부만 기록한다.
+- 먼슬리는 OKR처럼 “운동 10회” 같은 핵심 지표를 문장으로 적고 스스로 체크한다.
+
+둘을 분리하자 데이터도 단순해지고, 사용자 입장에서도 훨씬 자유로워졌다.
+
+<ImgRow className="img-row">
+  <Img src="/images/monthlygrow2/home.webp" alt="홈 화면" width="400" />
+  <Img
+    src="/images/monthlygrow2/monthly-keyresults.webp"
+    alt="먼슬리 화면 – 핵심 지표(Key Results)"
+    width="400"
+  />
+</ImgRow>
+
+---
+
+## 📚 몸으로 배운 백엔드 감각
+
+프론트엔드만 해왔던 나에겐 새로운 경험이 많았다. 예전에 AWS 기반으로 백엔드를 만드는 팀에 있었지만, 사실 나는 AWS Lambda와 NoSQL을 기반으로 개발하는 것의 한계와 어려움에 대해선 어깨 너머로 듣는 수준이었다.
+
+Cursor와 함께 Firestore에서 쿼리 조건과 인덱스 설정을 직접 만져보다 보니, “이게 예전에 동료 개발자분들이 얘기하셨던 상황이구나” 하고 어떤 제약이 있는지 이해됐다. 내가 100% 이해하고 직접 짜는 코드는 아니었지만, 어디에서 인덱싱을 하고 어떤 정보를 필터링해서 클라이언트로 가져올지를 직접 컨트롤할 수 있다는 것이 만족스러웠다.
+
+---
+
+## 🌱 온보딩
+
+monthlyGrow는 PARA와 Monthly OKR 개념을 합친 구조라, 나에게는 자연스러워도 처음 쓰는 사람에게는 진입 장벽이 있으리라고 생각했다. 그래서 가입 직후 열리고, 나중에도 다시 볼 수 있는 **온보딩 페이지**를 만들었다. PARA와 Monthly를 어떻게 이해해야 하는지 간단히 설명해 주는 흐름이다.
+
+<ImgRow className="img-row">
+  <Img
+    src="/images/monthlygrow2/onboarding.webp"
+    alt="온보딩 첫 페이지"
+    width="400"
+  />
+  <Img src="/images/monthlygrow2/settings.webp" alt="설정 페이지" width="400" />
+</ImgRow>
+
+---
+
+## 🌍 다국어화 첫 시도
+
+이번에는 다국어 UI에도 처음으로 도전했다. 현재 캡쳐에는 국문과 영문이 섞여 있지만, 로컬라이제이션을 직접 다뤄보니 사용자 경험에서 언어가 얼마나 중요한지 느낄 수 있었다.
+
+---
+
+## 📸 추가 스크린샷
+
+사용자가 할 일을 잘 추적하고, 월을 기준으로 회고할 수 있도록 여러 부가 UI를 만들었다.
+
+<ImgRow className="img-row">
+  <Img
+    src="/images/monthlygrow2/home-today.webp"
+    alt="홈 화면 하단 ‘오늘 할 일’ 탭"
+    width="400"
+  />
+  <Img
+    src="/images/monthlygrow2/home-annual.webp"
+    alt="홈 화면 하단 ‘연간 대시보드’ 탭"
+    width="400"
+  />
+</ImgRow>
+
+---
+
+## ✅ 후기
+
+이번 업데이트를 통해 monthlyGrow는 수동 MVP에서 한 단계 나아가, AI 자동화·구조 단순화·온보딩·다국어 UI까지 갖춘 두 번째 버전으로 성장했다.
+
+처음에는 “AI를 잘 활용하지 못하면 뒤처지지 않을까” 하는 FOMO가 있었지만, 만들수록 애정이 생겼고 AI 리터러시를 더 깊이 배우고 싶어졌다. 이전에는 내가 아는 범위 안에서만 토이 프로젝트를 기획했지만, 이번에는 AI를 활용해 탑다운 방식의 학습이 가능하다는 걸 직접 체감했다.
+
+급한 이직 준비가 끝나면 더 많은 피드백을 모아, 언젠가 웹 기반 앱으로 실제 출시하는 데 도전해 보고 싶다. monthlyGrow는 나에게 단순한 토이 프로젝트가 아니라, 배움과 성장을 이어가는 기록이기도 하다. 이 여정이 어디까지 이어질지는 모르겠지만, 언젠가 있을 다음 단계를 기약하게 된다.
