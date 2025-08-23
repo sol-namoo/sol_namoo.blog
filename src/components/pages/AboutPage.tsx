@@ -1,11 +1,15 @@
 import { Github, MapPin, Linkedin } from "lucide-react";
-import { Skill } from "../../types";
+import { Skill, EducationItem } from "../../types";
 
 interface AboutPageProps {
   isDark: boolean;
   currentLang: string;
   t: any;
   skills: Skill[];
+  education: {
+    ko: EducationItem[];
+    en: EducationItem[];
+  };
 }
 
 export const AboutPage = ({
@@ -13,7 +17,9 @@ export const AboutPage = ({
   currentLang,
   t,
   skills,
+  education,
 }: AboutPageProps) => {
+  const educationData = currentLang === "ko" ? education.ko : education.en;
   return (
     <div className="space-y-12">
       {/* 히어로 섹션 */}
@@ -76,7 +82,9 @@ export const AboutPage = ({
               isDark ? "text-gray-400" : "text-gray-600"
             } leading-relaxed`}
           >
-            {t.about.description}
+            {currentLang === "ko"
+              ? "빠른 학습능력과 실용적 접근으로 프론트엔드 개발에 집중하고 있습니다. 사용자 중심의 인터페이스 설계와 성능 최적화에 관심이 많으며, 협업과 소통을 통해 더 나은 제품을 만들어가는 것을 좋아합니다."
+              : "Focusing on frontend development with quick learning ability and practical approach. Interested in user-centered interface design and performance optimization, and enjoy creating better products through collaboration and communication."}
           </p>
         </div>
       </section>
@@ -104,69 +112,107 @@ export const AboutPage = ({
           </div>
         </div>
 
-        {/* 경험 & 연락처 */}
-        <div className="space-y-8">
-          <div>
-            <h2 className="text-2xl font-semibold mb-6">
-              {t.about.experience}
-            </h2>
-            <div
-              className={`p-6 rounded-xl border ${
-                isDark
-                  ? "bg-gray-800/30 border-gray-700"
-                  : "bg-white/60 border-gray-200"
-              }`}
-            >
-              <p
-                className={`${
-                  isDark ? "text-gray-300" : "text-gray-700"
-                } leading-relaxed`}
-              >
-                {currentLang === "ko"
-                  ? "빠른 학습능력과 실용적 접근으로 프론트엔드 개발에 집중하고 있습니다. 사용자 중심의 인터페이스 설계와 성능 최적화에 관심이 많으며, 협업과 소통을 통해 더 나은 제품을 만들어가는 것을 좋아합니다."
-                  : "Focusing on frontend development with quick learning ability and practical approach. Interested in user-centered interface design and performance optimization, and enjoy creating better products through collaboration and communication."}
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-semibold mb-6">{t.about.contact}</h2>
-            <div className="space-y-3">
-              <a
-                href="https://www.linkedin.com/in/sol-lee-namoo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center hover:opacity-80 transition-opacity"
-              >
-                <Linkedin
-                  className={`w-5 h-5 mr-3 ${
-                    isDark ? "text-blue-400" : "text-blue-600"
-                  }`}
-                />
-                <span>linkedin.com/in/sol-lee-namoo</span>
-              </a>
-              <a
-                href="https://github.com/sol-namoo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center hover:opacity-80 transition-opacity"
-              >
-                <Github
-                  className={`w-5 h-5 mr-3 ${
-                    isDark ? "text-green-400" : "text-green-600"
-                  }`}
-                />
-                <span>github.com/sol-namoo</span>
-              </a>
-              <div className="flex items-center">
-                <MapPin
-                  className={`w-5 h-5 mr-3 ${
-                    isDark ? "text-yellow-400" : "text-amber-600"
-                  }`}
-                />
-                <span>London, UK</span>
+        {/* Education & Certifications */}
+        <div>
+          <h2 className="text-2xl font-semibold mb-6">{t.about.education}</h2>
+          <div className="space-y-3">
+            {educationData.map((item, index) => (
+              <div key={index} className="flex justify-between items-start">
+                <div className="flex-1">
+                  <div className="flex items-start">
+                    <span className="text-lg mr-3">{item.emoji}</span>
+                    <div className="flex-1">
+                      {item.link ? (
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`font-medium hover:opacity-80 transition-opacity ${
+                            isDark ? "text-gray-200" : "text-gray-800"
+                          }`}
+                        >
+                          {item.institution} — {item.title}
+                        </a>
+                      ) : (
+                        <p
+                          className={`font-medium ${
+                            isDark ? "text-gray-200" : "text-gray-800"
+                          }`}
+                        >
+                          {item.institution} — {item.title}
+                        </p>
+                      )}
+                      {item.location && (
+                        <p
+                          className={`text-sm ${
+                            isDark ? "text-gray-400" : "text-gray-600"
+                          }`}
+                        >
+                          {item.location}
+                        </p>
+                      )}
+                      {item.link && (
+                        <p
+                          className={`text-sm ${
+                            isDark ? "text-gray-400" : "text-gray-600"
+                          }`}
+                        >
+                          [Verify]
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <span
+                  className={`text-sm ${
+                    isDark ? "text-gray-400" : "text-gray-600"
+                  } ml-4 whitespace-nowrap`}
+                >
+                  {item.period}
+                </span>
               </div>
-            </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* 연락처 */}
+      <div>
+        <h2 className="text-2xl font-semibold mb-6">{t.about.contact}</h2>
+        <div className="space-y-3">
+          <a
+            href="https://www.linkedin.com/in/sol-lee-namoo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center hover:opacity-80 transition-opacity"
+          >
+            <Linkedin
+              className={`w-5 h-5 mr-3 ${
+                isDark ? "text-blue-400" : "text-blue-600"
+              }`}
+            />
+            <span>linkedin.com/in/sol-lee-namoo</span>
+          </a>
+          <a
+            href="https://github.com/sol-namoo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center hover:opacity-80 transition-opacity"
+          >
+            <Github
+              className={`w-5 h-5 mr-3 ${
+                isDark ? "text-green-400" : "text-green-600"
+              }`}
+            />
+            <span>github.com/sol-namoo</span>
+          </a>
+          <div className="flex items-center">
+            <MapPin
+              className={`w-5 h-5 mr-3 ${
+                isDark ? "text-yellow-400" : "text-amber-600"
+              }`}
+            />
+            <span>London, UK</span>
           </div>
         </div>
       </div>

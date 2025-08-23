@@ -1,4 +1,11 @@
-import { Project, Skill, Texts, BlogPost, BlogCategory } from "../types";
+import {
+  Project,
+  Skill,
+  Texts,
+  BlogPost,
+  BlogCategory,
+  EducationItem,
+} from "../types";
 
 export const texts: Texts = {
   ko: {
@@ -31,6 +38,7 @@ export const texts: Texts = {
       description:
         "사용자 경험을 중시하는 개발자입니다. 깔끔하고 직관적인 인터페이스를 만드는 것을 좋아하며, 새로운 기술을 배우는 것에 항상 열정을 가지고 있습니다.",
       skills: "기술 스택",
+      education: "학력 & 자격증",
       contact: "연락처",
     },
     footer: {
@@ -67,6 +75,7 @@ export const texts: Texts = {
       description:
         "I'm a developer who values user experience. I love creating clean and intuitive interfaces, and I'm always passionate about learning new technologies.",
       skills: "Skills",
+      education: "Education & Certifications",
       contact: "Contact",
     },
     footer: {
@@ -638,4 +647,75 @@ export const skills: Skill[] = [
   { name: "CSS", color: "#FFE066" }, // 연한 노란색
   { name: "Tailwind", color: "#E6F3A3" }, // 연한 초록색
   { name: "MUI", color: "#4ADE80" }, // 초록색
+];
+
+// Education & Certifications 데이터
+export const educationKo: EducationItem[] = [
+  {
+    emoji: "🎓",
+    title: "컴퓨터과학 학사과정",
+    institution: "한국방송통신대학교",
+    period: "Mar 2024 – Feb 2026 (재학)",
+    location: "원격 (대한민국)",
+  },
+  {
+    emoji: "📜",
+    title: "정보처리기사",
+    institution: "HRD Korea",
+    period: "Aug 2024",
+  },
+  {
+    emoji: "📜",
+    title: "AWS Certified Developer – Associate",
+    institution: "Amazon Web Services",
+    period: "Dec 2023",
+    link: "https://www.credly.com/badges/47bca130-02c5-414d-8bbc-8af8615eb5bd/linked_in_profile",
+  },
+  {
+    emoji: "📜",
+    title: "Frontend Bootcamp",
+    institution: "Code States",
+    period: "2022",
+  },
+  {
+    emoji: "🎓",
+    title: "예술사 예술경영 전공",
+    institution: "한국예술종합학교",
+    period: "2015",
+  },
+];
+
+export const educationEn: EducationItem[] = [
+  {
+    emoji: "🎓",
+    title: "B.Sc. in Computer Science",
+    institution: "Korea National Open University",
+    period: "Mar 2024 – Feb 2026 (in progress)",
+    location: "Remote (South Korea)",
+  },
+  {
+    emoji: "📜",
+    title: "Engineer Information Processing",
+    institution: "HRD Korea",
+    period: "Aug 2024",
+  },
+  {
+    emoji: "📜",
+    title: "AWS Certified Developer – Associate",
+    institution: "Amazon Web Services",
+    period: "Dec 2023",
+    link: "https://www.credly.com/badges/47bca130-02c5-414d-8bbc-8af8615eb5bd/linked_in_profile",
+  },
+  {
+    emoji: "📜",
+    title: "Frontend Bootcamp",
+    institution: "Code States",
+    period: "2022",
+  },
+  {
+    emoji: "🎓",
+    title: "B.A. in Arts Management",
+    institution: "Korea National University of Arts",
+    period: "2015",
+  },
 ];

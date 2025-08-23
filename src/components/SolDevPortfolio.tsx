@@ -5,7 +5,14 @@ import { Footer } from "./layout/Footer";
 import { BlogPage } from "./pages/BlogPage";
 import { PortfolioPage } from "./pages/PortfolioPage";
 import { AboutPage } from "./pages/AboutPage";
-import { texts, blogPosts, projects, skills } from "../data";
+import {
+  texts,
+  blogPosts,
+  projects,
+  skills,
+  educationKo,
+  educationEn,
+} from "../data";
 import { BlogPost, Project, Skill } from "../types";
 
 const SolDevPortfolio = () => {
@@ -114,6 +121,7 @@ const SolDevPortfolio = () => {
               currentLang={currentLang}
               t={t}
               skills={skills}
+              education={{ ko: educationKo, en: educationEn }}
             />
           )}
         </main>

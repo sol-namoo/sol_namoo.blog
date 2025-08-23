@@ -93,6 +93,15 @@ export interface Skill {
   color: string; // CSS 색상 코드
 }
 
+export interface EducationItem {
+  emoji: string;
+  title: string;
+  institution: string;
+  period: string;
+  location?: string;
+  link?: string;
+}
+
 // 카테고리 타입 정의
 export type BlogCategory =
   | "retrospect"
@@ -169,6 +178,7 @@ export interface Texts {
       jobTitle: string;
       description: string;
       skills: string;
+      education: string;
       contact: string;
     };
     footer: {
@@ -204,6 +214,7 @@ export interface Texts {
       jobTitle: string;
       description: string;
       skills: string;
+      education: string;
       contact: string;
     };
     footer: {

@@ -1,6 +1,6 @@
 import { AboutPage } from "../components/pages/AboutPage";
 import { Layout, useLayout } from "../components/layout/Layout";
-import { skills } from "../data";
+import { skills, educationKo, educationEn } from "../data";
 
 const AboutContent = () => {
   const { isDark, currentLang, t } = useLayout();
@@ -11,6 +11,7 @@ const AboutContent = () => {
       currentLang={currentLang}
       t={t}
       skills={skills}
+      education={{ ko: educationKo, en: educationEn }}
     />
   );
 };
