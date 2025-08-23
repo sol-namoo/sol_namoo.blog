@@ -133,7 +133,7 @@ export const AboutPage = ({
             <h2 className="text-2xl font-semibold mb-6">{t.about.contact}</h2>
             <div className="space-y-3">
               <a
-                href="https://www.linkedin.com/in/sol-lee-sol-lee-namoo"
+                href="https://www.linkedin.com/in/sol-lee-namoo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center hover:opacity-80 transition-opacity"
@@ -143,7 +143,7 @@ export const AboutPage = ({
                     isDark ? "text-blue-400" : "text-blue-600"
                   }`}
                 />
-                <span>linkedin.com/in/sol-lee-sol-lee-namoo</span>
+                <span>linkedin.com/in/sol-lee-namoo</span>
               </a>
               <a
                 href="https://github.com/sol-namoo"

@@ -12,8 +12,20 @@ const SolDevPortfolio = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [isDark, setIsDark] = useState(false);
-  const [currentLang, setCurrentLang] = useState("en");
+  // localStorage에서 언어 설정 불러오기
+  const getInitialLang = () => {
+    const savedLang = localStorage.getItem("currentLang");
+    return savedLang === "ko" || savedLang === "en" ? savedLang : "en";
+  };
+
+  // localStorage에서 다크모드 설정 불러오기
+  const getInitialDarkMode = () => {
+    const savedDarkMode = localStorage.getItem("isDark");
+    return savedDarkMode === "true";
+  };
+
+  const [isDark, setIsDark] = useState(getInitialDarkMode);
+  const [currentLang, setCurrentLang] = useState(getInitialLang);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("all");
 
@@ -24,6 +36,16 @@ const SolDevPortfolio = () => {
   };
 
   const currentPage = getCurrentPageFromPath(location.pathname);
+
+  // 언어 설정이 변경될 때마다 localStorage에 저장
+  useEffect(() => {
+    localStorage.setItem("currentLang", currentLang);
+  }, [currentLang]);
+
+  // 다크모드 설정이 변경될 때마다 localStorage에 저장
+  useEffect(() => {
+    localStorage.setItem("isDark", isDark.toString());
+  }, [isDark]);
 
   // 페이지 변경 시 URL 업데이트
   const setCurrentPage = (page: string) => {

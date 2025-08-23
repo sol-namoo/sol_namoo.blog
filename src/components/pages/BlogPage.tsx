@@ -133,6 +133,26 @@ export const BlogPage = ({
 
   return (
     <div className="space-y-8">
+      {/* Header */}
+      <div className="text-center space-y-4">
+        <h1
+          className={`text-4xl font-bold ${
+            isDark ? "text-white" : "text-gray-900"
+          }`}
+        >
+          {currentLang === "ko" ? "블로그" : "Blog"}
+        </h1>
+        <p
+          className={`text-lg max-w-2xl mx-auto ${
+            isDark ? "text-gray-300" : "text-gray-600"
+          }`}
+        >
+          {currentLang === "ko"
+            ? "개발 과정에서의 학습과 경험을 공유하는 기술 블로그입니다. 회고, TIL, 리뷰 등 다양한 주제로 글을 작성합니다."
+            : "A technical blog sharing learning and experiences from the development process. Writing about various topics including retrospectives, TIL, and reviews."}
+        </p>
+      </div>
+
       {/* 필터 섹션 */}
       <div className="space-y-4">
         {/* 카테고리 필터 */}

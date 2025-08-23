@@ -34,7 +34,7 @@ export const BlogPostPage = ({ isDark, currentLang }: BlogPostPageProps) => {
   }, [post.loadComponent]);
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-3xl mx-auto">
       {/* 뒤로가기 버튼 */}
       <button
         onClick={() => navigate("/blog")}

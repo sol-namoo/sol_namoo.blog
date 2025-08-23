@@ -75,8 +75,546 @@ export const texts: Texts = {
   },
 };
 
-// 빈 프로젝트 배열
-export const projects: Project[] = [];
+// 프로젝트 데이터
+export const projects = {
+  professional: [
+    {
+      id: "focusmedia-platform",
+      title: "Advertisement Scheduling & Broadcasting Platform",
+      company: "FocusMedia Korea",
+      role: "Frontend Developer",
+      period: "Apr 2022 – Apr 2024",
+      thumbnail: "🚀",
+      description:
+        "Campaign editor, schedule validator, and region-based media planner with SSR migration for improved performance.",
+      achievements: [
+        {
+          summary: {
+            ko: "LCP 40% 개선",
+            en: "Reduced LCP from 2.07s → 1.24s (40% faster initial load)",
+          },
+          content: {
+            ko: "Code splitting과 동적 로딩을 통해 초기 페이지 로딩 성능을 40% 개선하여 사용자 경험을 크게 향상시켰습니다.",
+            en: "Through code splitting and dynamic loading, improved initial page loading performance by 40%, significantly enhancing user experience.",
+          },
+        },
+        {
+          summary: {
+            ko: "광고주 문의 전환율 1.2배 향상",
+            en: "Improved advertiser inquiry conversion rate by 1.2x",
+          },
+          content: {
+            ko: "폼 리팩토링과 미디어 프리로드 최적화를 통해 광고주 문의 전환율을 1.2배 향상시켰습니다.",
+            en: "Improved advertiser inquiry conversion rate by 1.2x through form refactoring and media preload optimization.",
+          },
+        },
+        {
+          summary: {
+            ko: "QA 에러 티켓 25% 감소",
+            en: "Increased campaign validation reliability",
+          },
+          content: {
+            ko: "모듈화된 Yup 기반 검증으로 QA 에러 티켓을 약 25% 감소시켰습니다.",
+            en: "Reduced QA error tickets by approximately 25% with modular Yup-based validation.",
+          },
+        },
+        {
+          summary: {
+            ko: "Next.js 14 SSR 마이그레이션",
+            en: "Migrated to SSR with Next.js 14",
+          },
+          content: {
+            ko: "SSR 기반 하이브리드 렌더링으로 SEO 가시성과 장기 유지보수성을 개선했습니다.",
+            en: "Improved SEO visibility and long-term maintainability through SSR-based hybrid rendering.",
+          },
+        },
+      ],
+      techStack: [
+        "React 18",
+        "Next.js 14",
+        "TypeScript",
+        "Yup",
+        "Jotai",
+        "Styled-components",
+        "MUI",
+        "AWS Lambda",
+      ],
+      category: "professional",
+      featured: true,
+      problemSolving: [
+        {
+          title: {
+            ko: "복잡한 페이지의 성능 병목",
+            en: "Performance bottleneck on complex pages",
+          },
+          problem: {
+            ko: "무거운 컴포넌트 렌더링으로 인해 LCP가 2초를 초과했습니다.",
+            en: "LCP exceeded 2s due to heavy component rendering.",
+          },
+          solution: {
+            ko: "코드 분할, 동적 임포트, React.memo, useCallback을 적용하여 렌더링을 격리했습니다.",
+            en: "Applied code splitting, dynamic imports, React.memo, and useCallback to isolate renders.",
+          },
+          result: {
+            ko: "40% 더 빠른 로딩 시간을 달성했습니다 (2.07초 → 1.24초).",
+            en: "Achieved 40% faster load times (2.07s → 1.24s).",
+          },
+        },
+        {
+          title: {
+            ko: "중첩된 데이터 검증 문제",
+            en: "Nested data validation issues",
+          },
+          problem: {
+            ko: "다층 스케줄 폼에서 부모-자식 데이터의 일관성이 떨어지는 경우가 많았습니다.",
+            en: "Multi-layered schedule forms often produced inconsistent parent–child data.",
+          },
+          solution: {
+            ko: "Yup과 Context API를 사용한 재사용 가능한 검증 시스템을 설계했습니다.",
+            en: "Designed a reusable validation system with Yup and Context API.",
+          },
+          result: {
+            ko: "제출 오류를 줄이고 신뢰성을 개선하여 QA 처리 시간을 단축했습니다.",
+            en: "Reduced submission errors, improved reliability, and cut QA turnaround time.",
+          },
+        },
+        {
+          title: {
+            ko: "실시간 작업 모니터링",
+            en: "Real-time task monitoring",
+          },
+          problem: {
+            ko: "비디오 트랜스코딩과 IoT 명령 실행을 여러 디바이스에서 추적해야 했습니다.",
+            en: "Needed to track video transcoding & IoT command execution across devices.",
+          },
+          solution: {
+            ko: "SSE/WebSocket을 평가하고 안정성을 위해 지수 백오프가 있는 폴링을 채택했습니다.",
+            en: "Evaluated SSE/WebSocket, adopted polling with exponential backoff for stability.",
+          },
+          result: {
+            ko: "최소한의 오버헤드로 일관된 작업 완료 추적을 제공했습니다.",
+            en: "Delivered consistent task completion tracking with minimal overhead.",
+          },
+        },
+      ],
+      overview: {
+        ko: "광고 스케줄링 및 방송 플랫폼을 구축했습니다. 캠페인 에디터, 스케줄 검증기, 지역별 미디어 플래너 모듈을 포함하며, React 16에서 SSR 기반 Next.js 14로 전체 시스템을 마이그레이션하여 성능과 사용자 경험을 개선했습니다.",
+        en: "Developed a comprehensive advertisement scheduling and broadcasting platform serving the largest elevator media network in Korea (9,000+ screens).\nAs the frontend engineer, I led the migration from React 16 to Next.js 14, built reusable validation systems, and optimised performance for component-heavy pages.\nUnified fragmented internal & external systems into one platform, boosting workflow efficiency by 4x and ad slot value by 2.9x.",
+      },
+      teamComposition: {
+        ko: "FE 2명, BE 2명, 디자이너 1명",
+        en: "FE 2, BE 2, Designer 1",
+      },
+      systemArchitecture: {
+        components: [
+          "Client (React/Next.js)",
+          "Backend API",
+          "AWS Lambda Functions",
+        ],
+        description:
+          "Client (React/Next.js) → Backend API → AWS Lambda Functions",
+      },
+      nextSteps: [
+        "Strengthen automated test coverage for future scalability",
+        "Explore alternative state management beyond Context API for deeply nested data",
+      ],
+      takeaway: {
+        ko: "모듈화된 검증과 하이브리드 렌더링 전략이 확장 가능한 엔터프라이즈급 플랫폼 구축에 중요하다는 것을 배웠습니다.",
+        en: "Learned the importance of modular validation and hybrid rendering strategies for building scalable enterprise-grade platforms.",
+      },
+    },
+    {
+      id: "advertiser-homepage",
+      title: "Advertiser Homepage",
+      company: "FocusMedia Korea",
+      role: "Frontend Developer",
+      period: "Apr 2022 – Apr 2024",
+      thumbnail: "🎨",
+      description:
+        "Responsive landing pages with advanced animations and customer journey tracking.",
+      achievements: [
+        {
+          summary: {
+            ko: "리드 전환율 20% 향상",
+            en: "Improved conversion by 1.2x",
+          },
+          content: {
+            ko: "GTM/GA 트래킹 시스템 구축과 사용자 여정 최적화를 통해 리드 전환율을 20% 향상시켰습니다.",
+            en: "Improved lead conversion rate by 20% through GTM/GA tracking system implementation and user journey optimization.",
+          },
+        },
+        {
+          summary: {
+            ko: "GSAP SVG 애니메이션 구축",
+            en: "Built SVG animations with GSAP",
+          },
+          content: {
+            ko: "GSAP를 활용한 고성능 애니메이션으로 사용자 참여도를 높이고 브랜드 인지도를 향상시켰습니다.",
+            en: "Built high-performance animations with GSAP to increase user engagement and improve brand recognition.",
+          },
+        },
+        {
+          summary: {
+            ko: "GTM/GA 트래킹 시스템 통합",
+            en: "Integrated GTM/GA tracking",
+          },
+          content: {
+            ko: "전체 사용자 여정을 추적할 수 있는 분석 시스템을 구축하여 데이터 기반 의사결정을 지원했습니다.",
+            en: "Built an analytics system that tracks the entire user journey and supports data-driven decision making.",
+          },
+        },
+        {
+          summary: {
+            ko: "SAP 연동 폼 시스템 모듈화",
+            en: "Consolidated multiple SAP-integrated inquiry forms into a modular React form system",
+          },
+          content: {
+            ko: "여러 SAP 연동 문의 폼을 모듈형 React 폼 시스템으로 통합하여 유지보수성을 개선하고 비즈니스 규칙 변경 시 업데이트 작업을 줄였습니다.",
+            en: "Consolidated multiple SAP-integrated inquiry forms into a modular React form system, improving maintainability and reducing update effort when business rules changed.",
+          },
+        },
+      ],
+      techStack: ["React 18", "Next.js", "GSAP", "Module CSS", "Vercel"],
+      liveUrl: "#",
+      category: "professional",
+      featured: true,
+      problemSolving: [
+        {
+          title: {
+            ko: "레거시 마이그레이션",
+            en: "Legacy migration",
+          },
+          problem: {
+            ko: "기존 사이트는 PHP + 정적 HTML 기반으로 유지보수가 어렵고 SEO/UX 확장성에 한계가 있었습니다.",
+            en: "Existing site was built with static PHP + HTML, which was hard to maintain and limited in SEO/UX scalability.",
+          },
+          solution: {
+            ko: "Next.js 기반으로 신규 구축하여 모듈형 폼 구조 및 반응형 레이아웃을 구현했습니다.",
+            en: "Built from scratch with Next.js, implementing modular form structure and responsive layout.",
+          },
+          result: {
+            ko: "SEO 성능을 유지하면서 20%의 UX 개선을 달성했습니다.",
+            en: "Preserved SEO performance while improving perceived UX by 20% through smoother navigation and faster interactivity.",
+          },
+        },
+        {
+          title: {
+            ko: "비디오 퍼포먼스",
+            en: "Video performance",
+          },
+          problem: {
+            ko: "Hover 기반 영상 배너의 로딩이 느려 사용자 참여도가 떨어졌습니다.",
+            en: "Hover-triggered video banners suffered from slow load times, causing poor engagement.",
+          },
+          solution: {
+            ko: "자주 노출되는 영상 에셋을 preload 처리했습니다.",
+            en: "Implemented preload strategies for frequently triggered video assets.",
+          },
+          result: {
+            ko: "영상 재생 반응성을 개선하여 사용자 참여도와 브랜드 인지도를 높였습니다.",
+            en: "Improved responsiveness of video playback, increasing user interaction and brand impression.",
+          },
+        },
+        {
+          title: {
+            ko: "사용자 여정 추적",
+            en: "User journey tracking",
+          },
+          problem: {
+            ko: "광고주 행동과 캠페인 문의를 추적할 수 있는 중앙 분석 시스템이 없었습니다.",
+            en: "No central analytics existed for monitoring advertiser behavior and campaign inquiries.",
+          },
+          solution: {
+            ko: "GTM/GA를 전체 페이지에 통합하여 사용자 여정 데이터를 수집했습니다.",
+            en: "Integrated GTM/GA across the entire site to capture customer journey data.",
+          },
+          result: {
+            ko: "데이터 기반 의사결정이 가능해졌고 광고 문의 전환율이 20% 상승했습니다.",
+            en: "Enabled data-driven decision making and contributed to a 20% uplift in advertiser inquiries.",
+          },
+        },
+        {
+          title: {
+            ko: "분산된 SAP 문의 폼",
+            en: "Fragmented SAP inquiry forms",
+          },
+          problem: {
+            ko: "SAP문의 폼이 개별 HTML 시트로 관리되어 중복 작업을 만들고 업데이트를 느리게 했습니다.",
+            en: "Multiple PHP/HTML forms tied to separate SAP sheets created duplicated work and slowed updates.",
+          },
+          solution: {
+            ko: "폼을 중앙화된 검증과 재사용 가능한 섹션을 가진 조합 가능한 React 모듈 시스템으로 재구축했습니다.",
+            en: "Rebuilt forms into a composable React module system with centralised validation and reusable sections.",
+          },
+          result: {
+            ko: "유지보수를 단순화하고 개발자 생산성을 향상시켜 비즈니스 변화에 더 빠르게 적응할 수 있게 했습니다.",
+            en: "Simplified maintenance, improved developer productivity, and enabled faster adaptation to business changes.",
+          },
+        },
+      ],
+      overview: {
+        ko: "광고주 전용 홈페이지를 기존 PHP 기반에서 Next.js 구조와 GSAP 인터랙션으로 재구축했습니다.\nGTM/GA 통합과 문의 플로우 최적화를 통해 **광고주 문의 전환율을 20% 향상(1.2배 증가)**시켰습니다.\n비디오 프리로딩과 고성능 애니메이션으로 사용자 체감 성능과 브랜드 인지도를 높였으며, 이를 통해 세일즈 파이프라인 강화를 지원하고 신규 광고주 확보에 기여했습니다.",
+        en: "Rebuilt the advertiser-facing homepage with a responsive Next.js architecture and interactive GSAP animations, replacing a static PHP system.\nEnhanced user journey tracking with GTM/GA and optimised inquiry flow, resulting in a 20% uplift in advertiser conversions (1.2x increase).\nImproved perceived engagement and brand recognition through high-performance video preload strategies, supporting FocusMedia's sales pipeline and strengthening client acquisition.",
+      },
+      teamComposition: {
+        ko: "FE 2명, BE 2명, 디자이너 1명",
+        en: "FE 2, BE 2, Designer 1",
+      },
+      systemArchitecture: {
+        components: ["Frontend (React)", "Backend API"],
+        description: "Static Generation with Dynamic Components",
+      },
+      takeaway: {
+        ko: "모듈형 React 폼이 SAP 연동 엔터프라이즈 워크플로우에서 유지보수성과 개발자 경험을 개선할 수 있다는 것을 배웠습니다.",
+        en: "Learned how modular React forms can improve maintainability and DX in SAP-integrated enterprise workflows.",
+      },
+    },
+    // {
+    //   id: "admin-dashboard",
+    //   title: "Admin Dashboard",
+    //   company: "FocusMedia Korea",
+    //   role: "Frontend Developer",
+    //   period: "Jan 2024 – Mar 2024",
+    //   thumbnail: "📊",
+    //   description:
+    //     "Internal admin dashboard for campaign management and analytics with real-time data visualization.",
+    //   achievements: [
+    //     {
+    //       achievement: "Real-time data updates with WebSocket",
+    //       description:
+    //         "WebSocket을 활용한 실시간 데이터 업데이트로 관리자가 즉시 최신 정보를 확인할 수 있도록 구현했습니다.",
+    //     },
+    //     {
+    //       achievement: "Interactive charts with Chart.js",
+    //       description:
+    //         "Chart.js를 활용한 인터랙티브 차트로 복잡한 데이터를 직관적으로 시각화했습니다.",
+    //     },
+    //     {
+    //       achievement: "Role-based access control implementation",
+    //       description:
+    //         "역할 기반 접근 제어 시스템을 구현하여 보안을 강화하고 사용자 권한을 체계적으로 관리했습니다.",
+    //     },
+    //   ],
+    //   techStack: ["React", "TypeScript", "Chart.js", "WebSocket", "JWT"],
+    //   liveUrl: "#",
+    //   category: "professional",
+    //   featured: false,
+    //   systemArchitecture: {
+    //     components: ["Frontend (React)", "Backend API", "WebSocket"],
+    //     description: "Real-time Dashboard with WebSocket Integration",
+    //   },
+    // },
+  ],
+  personal: [
+    {
+      id: "monthly-grow",
+      title: "MonthlyGrow",
+      role: "Solo Developer",
+      period: "Apr 2024 – Present",
+      thumbnail: "📈",
+      description:
+        "Self-improvement app for structured goal tracking using PARA methodology and AI prompts.",
+      achievements: [
+        {
+          summary: {
+            ko: "AI 기반 습관 제안 시스템",
+            en: "AI-powered habit suggestions",
+          },
+          content: {
+            ko: "Claude LLM과 GPT-4 API를 통합하여 개인화된 목표 추천 시스템을 구현했습니다.",
+            en: "Implemented personalized goal recommendation system through integration of Claude LLM and GPT-4 API.",
+          },
+        },
+        {
+          summary: {
+            ko: "자동화된 루프 스냅샷",
+            en: "Automated loop snapshots",
+          },
+          content: {
+            ko: "Firebase Pub/Sub 크론잡을 이용해 매월 1일 스냅샷을 자동 생성하고 미완료 프로젝트를 자동 이월하는 로직을 구현했습니다.",
+            en: "Used Firebase Pub/Sub cron jobs to generate monthly snapshots and automatically carry over unfinished projects.",
+          },
+        },
+        {
+          summary: {
+            ko: "NoSQL 스키마 설계 개선",
+            en: "Improved NoSQL schema design",
+          },
+          content: {
+            ko: "Loop–Project–Task 관계를 PARA 구조에 맞춰 재설계하여 유지보수성과 확장성을 확보했습니다.",
+            en: "Redesigned Loop–Project–Task relationships aligned with the PARA framework for better maintainability and scalability.",
+          },
+        },
+      ],
+      techStack: [
+        "React",
+        "Tailwind CSS",
+        "Firebase (Firestore, Auth, Pub/Sub)",
+        "Claude LLM",
+        "GPT-4 API",
+      ],
+      liveUrl: "#",
+      githubUrl: "#",
+      category: "personal",
+      featured: true,
+      problemSolving: [
+        {
+          title: {
+            ko: "전체 개발 사이클 경험",
+            en: "Full development cycle",
+          },
+          problem: {
+            ko: "기획부터 UI, 개발, 데이터 입력, 배포까지 혼자 수행해야 하는 복잡한 워크플로우",
+            en: "Had to handle the entire workflow alone, from planning and UI to development, data setup, and deployment.",
+          },
+          solution: {
+            ko: "체크리스트 기반으로 기획 → UI 프로토타입 → 구현 → 데이터 연동 → 배포까지 8단계 이상을 순차적으로 관리",
+            en: "Created a checklist to sequentially manage over 8 stages: planning → UI prototyping → implementation → data integration → deployment.",
+          },
+          result: {
+            ko: "실무 수준의 end-to-end 개발 사이클을 혼자 경험하며 자기 주도적 문제 해결 능력 강화",
+            en: "Gained end-to-end product development experience and strengthened self-directed problem solving skills.",
+          },
+        },
+        {
+          title: {
+            ko: "복잡한 데이터 구조와 비용 이슈",
+            en: "Complex data modeling and cost issues",
+          },
+          problem: {
+            ko: "연간 대시보드 조회에 필요한 데이터 간 관계가 복잡, 조회 시 실시간 집계를 수행하면 데이터 계산 비용과 응답 지연이 발생",
+            en: "Yearly dashboard queries required complex data relationships, and on-demand aggregation risked high monthly computation cost and slow response times",
+          },
+          solution: {
+            ko: "스키마를 리팩토링하고 크론 기반 스냅샷 설계를 도입해 매월 자동화된 데이터 생성과 carry-over를 구현",
+            en: "Refactored schema and introduced cron-based snapshot design to automate monthly data creation and carry-over",
+          },
+          result: {
+            ko: "조회 시 실시간 집계가 필요 없어져 비용을 절감하고 빠른 대시보드 UX를 확보",
+            en: "Removed on-demand aggregation, reducing cost and achieving fast dashboard UX",
+          },
+        },
+        {
+          title: {
+            ko: "AI 프롬프팅 및 UX 가이드",
+            en: "AI prompting & UX guidance",
+          },
+          problem: {
+            ko: "Claude API 사용 상황에서 앱 목적에 맞는 일관된 답변 필요",
+            en: "Claude API use required consistent and relevant outputs for the app’s purpose",
+          },
+          solution: {
+            ko: "UI 폼에서 필수 값 입력을 가이드하고, 앱 구조에 맞는 프롬프트 템플릿 설계 및 예시 지시 추가",
+            en: "Guided input of required fields via UI forms, designed prompt templates, and added examples to stabilise outputs",
+          },
+          result: {
+            ko: "응답 관련성과 실행 가능성 높여 안정적인 AI 응답 흐름 확보",
+            en: "Improved response relevance and actionability, enabling stable AI interaction flow",
+          },
+        },
+      ],
+      overview: {
+        ko: "PARA 방법론을 기반으로 한 목표 관리와 회고 시스템을 AI와 결합하여 만든 자기계발 애플리케이션입니다. 모든 개발 사이클을 혼자 경험하며, 복잡한 데이터 구조 문제와 비용/UX 트레이드오프를 해결했습니다.",
+        en: "AI-powered self-improvement app combining PARA-based goal tracking with automated reflection. Built end-to-end as a solo developer, addressing complex data modeling and balancing cost with UX through automation.",
+      },
+      teamComposition: {
+        ko: "Solo Project",
+        en: "Solo Project",
+      },
+      systemArchitecture: {
+        components: [
+          "Frontend (React)",
+          "Firebase (Firestore, Auth, Pub/Sub)",
+          "AI APIs (Claude, GPT-4)",
+        ],
+        description:
+          "Automated monthly snapshots with PARA-based schema and AI integration",
+      },
+      whatILearned: [
+        "Vite의 빠른 개발 환경과 빌드 성능의 중요성",
+        "MDX를 활용한 기술 블로그 구축과 콘텐츠 관리 전략",
+        "다국어 지원 시스템 설계와 사용자 경험 최적화",
+        "다크/라이트 모드 구현을 통한 접근성과 사용자 선호도 고려",
+        "정적 사이트에서 동적 기능을 구현하는 하이브리드 접근법",
+      ],
+      nextSteps: [
+        "SEO 최적화 및 검색 엔진 가시성 향상",
+        "블로그 댓글 시스템 및 소셜 기능 추가",
+        "성능 모니터링 및 분석 도구 통합",
+        "PWA 기능 추가로 모바일 앱 경험 제공",
+        "콘텐츠 관리 시스템(CMS) 도입 고려",
+      ],
+    },
+    {
+      id: "portfolio-website",
+      title: "Portfolio Website",
+      role: "Solo Developer",
+      period: "Dec 2024 – Present",
+      thumbnail: "🌐",
+      description:
+        "Personal portfolio website built with React and Vite, featuring dark mode and responsive design.",
+      achievements: [
+        {
+          summary: {
+            ko: "모바일 우선 반응형 디자인",
+            en: "Responsive design with mobile-first approach",
+          },
+          content: {
+            ko: "모바일 우선 접근법으로 반응형 디자인을 구현하여 모든 디바이스에서 최적의 사용자 경험을 제공합니다.",
+            en: "Implemented responsive design with mobile-first approach to provide optimal user experience across all devices.",
+          },
+        },
+        {
+          summary: {
+            ko: "MDX 기반 블로그 시스템",
+            en: "MDX-based blog system",
+          },
+          content: {
+            ko: "MDX를 활용한 마크다운 기반 블로그 시스템을 구축하여 기술 글 작성과 콘텐츠 관리를 효율화했습니다.",
+            en: "Built an MDX-based blog system for efficient technical writing and content management.",
+          },
+        },
+        {
+          summary: {
+            ko: "코드 분할 성능 최적화",
+            en: "Optimized performance with code splitting",
+          },
+          content: {
+            ko: "코드 분할을 통한 성능 최적화로 초기 로딩 속도를 개선하고 사용자 경험을 향상시켰습니다.",
+            en: "Optimized performance through code splitting to improve initial loading speed and enhance user experience.",
+          },
+        },
+        {
+          summary: {
+            ko: "다국어 지원 시스템",
+            en: "Multi-language support system",
+          },
+          content: {
+            ko: "한국어/영어 다국어 지원 시스템을 구현하여 글로벌 접근성을 향상시켰습니다.",
+            en: "Implemented Korean/English multi-language support system to enhance global accessibility.",
+          },
+        },
+      ],
+      techStack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+      liveUrl: "#",
+      githubUrl: "#",
+      category: "personal",
+      featured: false,
+      overview: {
+        ko: "React와 Vite로 구축된 개인 포트폴리오 웹사이트입니다. 다크/라이트 모드 토글, MDX 기반 블로그 시스템, 다국어 지원을 특징으로 하며, 코드 분할을 통한 성능 최적화를 구현했습니다.",
+        en: "Personal portfolio website built with React and Vite, featuring dark/light mode toggle, MDX-based blog system, and multi-language support. Implemented performance optimization through code splitting.",
+      },
+      teamComposition: {
+        ko: "Solo Project",
+        en: "Solo Project",
+      },
+      systemArchitecture: {
+        components: ["Frontend (React + Vite)", "MDX Content", "Static Build"],
+        description: "Static Site with Dynamic Features and MDX Blog",
+      },
+    },
+  ],
+};
 
 // 빈 블로그 포스트 배열 (실제로는 utils/blogUtils에서 로드됨)
 export const blogPosts: BlogPost[] = [];

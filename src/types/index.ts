@@ -30,24 +30,62 @@ export interface BlogPost {
   content?: string; // 마크다운 본문 (MDX 사용 시 선택사항)
 }
 
-export interface Project {
-  id: string;
+export interface AchievementItem {
+  summary: {
+    ko: string;
+    en: string;
+  };
+  content: {
+    ko: string;
+    en: string;
+  };
+}
+
+export interface ProblemSolvingItem {
   title: {
     ko: string;
     en: string;
   };
-  description: {
+  problem: {
     ko: string;
     en: string;
   };
-  tech: string[]; // 사용된 기술 스택
-  image: string; // 프로젝트 이미지 URL
-  github?: string; // GitHub 링크 (선택사항)
-  demo?: string; // 데모 링크 (선택사항)
-  type: "work" | "side" | "personal"; // 프로젝트 유형
-  team: "individual" | "team"; // 팀/개인 작업
-  year: number; // 프로젝트 완료 연도
+  solution: {
+    ko: string;
+    en: string;
+  };
+  result: {
+    ko: string;
+    en: string;
+  };
+}
+
+export interface SystemArchitecture {
+  components: string[];
+  description: string;
+}
+
+export interface Project {
+  id: string;
+  title: string;
+  company?: string; // 회사명 (프로페셔널 프로젝트의 경우)
+  role: string; // 역할 (예: "Frontend Developer", "Solo Developer")
+  period: string; // 기간 (예: "Apr 2022 – Apr 2024")
+  thumbnail: string; // 썸네일 (이모지 또는 이미지 URL)
+  description: string; // 프로젝트 설명
+  achievements: AchievementItem[]; // 주요 성과/업적 목록
+  techStack: string[]; // 사용된 기술 스택
+  category: "professional" | "personal"; // 프로젝트 카테고리
   featured?: boolean; // 주요 프로젝트 여부
+  liveUrl?: string; // 라이브 사이트 링크 (선택사항)
+  githubUrl?: string; // GitHub 링크 (선택사항)
+  overview?: { ko: string; en: string }; // 프로젝트 개요 (선택사항)
+  teamComposition?: { ko: string; en: string }; // 팀 구성 (선택사항)
+  problemSolving?: ProblemSolvingItem[]; // 문제 해결 과정 (선택사항)
+  systemArchitecture?: SystemArchitecture; // 시스템 아키텍처 (선택사항)
+  nextSteps?: string[]; // 다음 단계 계획 (선택사항)
+  whatILearned?: string[]; // 배운 점 (선택사항) - Personal projects only
+  takeaway?: { ko: string; en: string }; // 한 줄 takeaway (Professional projects only)
 }
 
 export interface Skill {

@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext } from "react";
+import React, { useState, createContext, useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
@@ -28,8 +28,20 @@ interface LayoutProps {
 }
 
 export const Layout = ({ children }: LayoutProps) => {
-  const [isDark, setIsDark] = useState(false);
-  const [currentLang, setCurrentLang] = useState("en");
+  // localStorage에서 언어 설정 불러오기
+  const getInitialLang = () => {
+    const savedLang = localStorage.getItem("currentLang");
+    return savedLang === "ko" || savedLang === "en" ? savedLang : "en";
+  };
+
+  // localStorage에서 다크모드 설정 불러오기
+  const getInitialDarkMode = () => {
+    const savedDarkMode = localStorage.getItem("isDark");
+    return savedDarkMode === "true";
+  };
+
+  const [isDark, setIsDark] = useState(getInitialDarkMode);
+  const [currentLang, setCurrentLang] = useState(getInitialLang);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -38,6 +50,16 @@ export const Layout = ({ children }: LayoutProps) => {
     const path = pathname.split("/")[1]; // '/blog' -> 'blog'
     return path || "blog";
   };
+
+  // 언어 설정이 변경될 때마다 localStorage에 저장
+  useEffect(() => {
+    localStorage.setItem("currentLang", currentLang);
+  }, [currentLang]);
+
+  // 다크모드 설정이 변경될 때마다 localStorage에 저장
+  useEffect(() => {
+    localStorage.setItem("isDark", isDark.toString());
+  }, [isDark]);
 
   const t = texts[currentLang as keyof typeof texts];
 
@@ -80,7 +102,7 @@ export const Layout = ({ children }: LayoutProps) => {
         />
 
         {/* 메인 콘텐츠 */}
-        <main className="max-w-6xl mx-auto px-4 py-8">{children}</main>
+        <main className="max-w-6xl mx-auto px-8 py-8">{children}</main>
 
         {/* 푸터 */}
         <Footer isDark={isDark} t={t} />
