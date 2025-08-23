@@ -27,15 +27,26 @@ const ProjectCard = ({
   currentLang = "en",
 }) => (
   <div
-    className={`group relative rounded-2xl p-4 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl border ${
+    className={`group relative rounded-2xl p-4 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl border max-w-md w-full ${
       isDark
         ? "bg-gray-800/50 border-gray-700 hover:bg-gray-800/70"
         : "bg-white/70 border-gray-200 hover:bg-white/90 backdrop-blur-sm"
     }`}
   >
     {/* Thumbnail */}
-    <div className="flex items-center justify-center w-12 h-12 text-2xl mb-3 rounded-xl bg-gradient-to-br from-yellow-100 to-orange-100">
-      {project.thumbnail}
+    <div className="relative w-full aspect-video mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-yellow-100 to-orange-100">
+      {project.thumbnail.startsWith("http") ||
+      project.thumbnail.startsWith("/") ? (
+        <img
+          src={project.thumbnail}
+          alt={project.title}
+          className="w-full h-full object-cover"
+        />
+      ) : (
+        <div className="flex items-center justify-center w-full h-full text-4xl">
+          {project.thumbnail}
+        </div>
+      )}
     </div>
 
     {/* Header */}
@@ -280,17 +291,19 @@ export const PortfolioPage = ({
         </div>
 
         {professionalProjects.length > 0 ? (
-          <div className="flex flex-wrap justify-center gap-4">
-            {professionalProjects.map((project) => (
-              <div key={project.id} className="w-full md:w-80 lg:w-96">
-                <ProjectCard
-                  project={project}
-                  isDark={isDark}
-                  onViewDetails={handleViewDetails}
-                  currentLang={currentLang}
-                />
-              </div>
-            ))}
+          <div className="max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row md:justify-center gap-3">
+              {professionalProjects.map((project) => (
+                <div key={project.id} className="w-full flex justify-center">
+                  <ProjectCard
+                    project={project}
+                    isDark={isDark}
+                    onViewDetails={handleViewDetails}
+                    currentLang={currentLang}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         ) : (
           <div className="text-center py-12">
@@ -330,17 +343,19 @@ export const PortfolioPage = ({
         </div>
 
         {personalProjects.length > 0 ? (
-          <div className="flex flex-wrap justify-center gap-4">
-            {personalProjects.map((project) => (
-              <div key={project.id} className="w-full md:w-80 lg:w-96">
-                <ProjectCard
-                  project={project}
-                  isDark={isDark}
-                  onViewDetails={handleViewDetails}
-                  currentLang={currentLang}
-                />
-              </div>
-            ))}
+          <div className="max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row md:justify-center gap-3">
+              {personalProjects.map((project) => (
+                <div key={project.id} className="w-full flex justify-center">
+                  <ProjectCard
+                    project={project}
+                    isDark={isDark}
+                    onViewDetails={handleViewDetails}
+                    currentLang={currentLang}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         ) : (
           <div className="text-center py-12">
@@ -433,7 +448,7 @@ const ProjectDetailView = ({
               <div className="font-semibold mb-2">
                 {currentLang === "ko" ? "팀 구성" : "Team Composition"}
               </div>
-              <p className="text-base">
+              <p className="text-base mb-1">
                 {project.teamComposition
                   ? project.teamComposition[
                       currentLang as keyof typeof project.teamComposition
@@ -451,7 +466,9 @@ const ProjectDetailView = ({
               }`}
             >
               <div className="font-semibold mb-2">My Role</div>
-              <p className="text-base">{project.role}</p>
+              <p className="text-base mb-1">
+                {project.detailedRole || project.role}
+              </p>
             </div>
             <div
               className={`p-5 rounded-lg border ${
@@ -460,8 +477,23 @@ const ProjectDetailView = ({
                   : "bg-gray-50 border-gray-200"
               }`}
             >
-              <div className="font-semibold mb-2">Project Duration</div>
-              <p className="text-base">{project.period}</p>
+              <div className="font-semibold mb-2">
+                {currentLang === "ko" ? "기술 스택" : "Tech Stack"}
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {project.techStack.map((tech, index) => (
+                  <span
+                    key={index}
+                    className={`px-2 py-1 text-xs rounded-md ${
+                      isDark
+                        ? "bg-gray-700 text-gray-300"
+                        : "bg-gray-200 text-gray-700"
+                    }`}
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -594,86 +626,61 @@ const ProjectDetailView = ({
         </section>
       )}
 
-      {/* Tech Stack & Notables Section */}
+      {/* Architecture Section */}
       <section className="space-y-6">
         <h2
           className={`text-2xl font-semibold ${
             isDark ? "text-white" : "text-gray-900"
           }`}
         >
-          Tech Stack & Architecture
+          {currentLang === "ko" ? "시스템 아키텍처" : "System Architecture"}
         </h2>
-
-        <div className="flex flex-wrap gap-2 mb-8">
-          {project.techStack.map((tech, index) => (
-            <span
-              key={index}
-              className={`px-3 py-1.5 text-sm rounded-full border font-medium ${
-                isDark
-                  ? "bg-gray-800/50 border-gray-600 text-gray-300"
-                  : "bg-gray-50 border-gray-200 text-gray-700"
-              }`}
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
 
         {/* Architecture Diagram */}
         {project.systemArchitecture && (
-          <div>
-            <h3
-              className={`text-lg font-semibold mb-4 ${
-                isDark ? "text-white" : "text-gray-900"
-              }`}
-            >
-              System Architecture
-            </h3>
-            <div
-              className={`aspect-[16/9] rounded-xl border p-8 ${
-                isDark
-                  ? "border-gray-600 bg-gray-800/50"
-                  : "border-gray-300 bg-gray-50"
-              }`}
-            >
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="text-center space-y-4">
-                  <div className="flex justify-center items-center space-x-8">
-                    {project.systemArchitecture.components.map(
-                      (component, index) => (
-                        <React.Fragment key={index}>
+          <div
+            className={`aspect-[16/9] rounded-xl border p-8 ${
+              isDark
+                ? "border-gray-600 bg-gray-800/50"
+                : "border-gray-300 bg-gray-50"
+            }`}
+          >
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="text-center space-y-4">
+                <div className="flex justify-center items-center space-x-8">
+                  {project.systemArchitecture.components.map(
+                    (component, index) => (
+                      <React.Fragment key={index}>
+                        <div
+                          className={`px-4 py-2 rounded-lg border ${
+                            isDark
+                              ? "bg-gray-700 border-gray-600"
+                              : "bg-white border-gray-300"
+                          }`}
+                        >
+                          {component}
+                        </div>
+                        {index <
+                          project.systemArchitecture.components.length - 1 && (
                           <div
-                            className={`px-4 py-2 rounded-lg border ${
-                              isDark
-                                ? "bg-gray-700 border-gray-600"
-                                : "bg-white border-gray-300"
-                            }`}
+                            className={
+                              isDark ? "text-gray-400" : "text-gray-500"
+                            }
                           >
-                            {component}
+                            →
                           </div>
-                          {index <
-                            project.systemArchitecture.components.length -
-                              1 && (
-                            <div
-                              className={
-                                isDark ? "text-gray-400" : "text-gray-500"
-                              }
-                            >
-                              →
-                            </div>
-                          )}
-                        </React.Fragment>
-                      )
-                    )}
-                  </div>
-                  <p
-                    className={`text-sm ${
-                      isDark ? "text-gray-400" : "text-gray-600"
-                    }`}
-                  >
-                    {project.systemArchitecture.description}
-                  </p>
+                        )}
+                      </React.Fragment>
+                    )
+                  )}
                 </div>
+                <p
+                  className={`text-sm ${
+                    isDark ? "text-gray-400" : "text-gray-600"
+                  }`}
+                >
+                  {project.systemArchitecture.description}
+                </p>
               </div>
             </div>
           </div>
@@ -734,35 +741,7 @@ const ProjectDetailView = ({
       </section>
 
       {/* Retrospective Section */}
-      {project.category === "professional" ? (
-        // Professional projects: Simple takeaway
-        project.takeaway && (
-          <section className="space-y-6">
-            <h2
-              className={`text-2xl font-semibold ${
-                isDark ? "text-white" : "text-gray-900"
-              }`}
-            >
-              Retrospective
-            </h2>
-            <div
-              className={`p-6 rounded-xl border ${
-                isDark
-                  ? "bg-gray-800/30 border-gray-700"
-                  : "bg-gray-50 border-gray-200"
-              }`}
-            >
-              <p
-                className={`text-lg leading-relaxed ${
-                  isDark ? "text-gray-300" : "text-gray-700"
-                }`}
-              >
-                {project.takeaway[currentLang as keyof typeof project.takeaway]}
-              </p>
-            </div>
-          </section>
-        )
-      ) : (
+      {project.category === "personal" && (
         // Personal projects: Full retrospective with What I Learned and Next Steps
         <section className="space-y-6">
           <h2

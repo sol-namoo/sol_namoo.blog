@@ -92,7 +92,9 @@ export const projects = {
       title: "Advertisement Scheduling & Broadcasting Platform",
       company: "FocusMedia Korea",
       role: "Frontend Developer",
-      period: "Apr 2022 – Apr 2024",
+      detailedRole:
+        "Owned media file upload & management, scheduling UI, and validation architecture",
+      period: "Dec 2022 – Apr 2025",
       thumbnail: "🚀",
       description:
         "Campaign editor, schedule validator, and region-based media planner with SSR migration for improved performance.",
@@ -119,11 +121,11 @@ export const projects = {
         },
         {
           summary: {
-            ko: "QA 에러 티켓 25% 감소",
+            ko: "캠페인 검증 신뢰성 향상",
             en: "Increased campaign validation reliability",
           },
           content: {
-            ko: "모듈화된 Yup 기반 검증으로 QA 에러 티켓을 약 25% 감소시켰습니다.",
+            ko: "모듈화된 Yup 기반 검증으로 캠페인 검증 신뢰성을 향상시켰습니다.",
             en: "Reduced QA error tickets by approximately 25% with modular Yup-based validation.",
           },
         },
@@ -207,12 +209,12 @@ export const projects = {
         },
       ],
       overview: {
-        ko: "광고 스케줄링 및 방송 플랫폼을 구축했습니다. 캠페인 에디터, 스케줄 검증기, 지역별 미디어 플래너 모듈을 포함하며, React 16에서 SSR 기반 Next.js 14로 전체 시스템을 마이그레이션하여 성능과 사용자 경험을 개선했습니다.",
+        ko: "한국 최대 엘리베이터 미디어 네트워크(9,000+ 스크린)를 서비스하는 종합 광고 스케줄링 및 방송 플랫폼을 개발했습니다.\n프론트엔드 엔지니어로서 React 16에서 Next.js 14로의 마이그레이션을 주도하고, 재사용 가능한 검증 시스템을 구축하며, 컴포넌트가 많은 페이지의 성능을 최적화했습니다.\n분산된 내부 및 외부 시스템을 하나의 플랫폼으로 통합하여 워크플로우 효율성을 4배, 광고 슬롯 가치를 2.9배 향상시켰습니다.",
         en: "Developed a comprehensive advertisement scheduling and broadcasting platform serving the largest elevator media network in Korea (9,000+ screens).\nAs the frontend engineer, I led the migration from React 16 to Next.js 14, built reusable validation systems, and optimised performance for component-heavy pages.\nUnified fragmented internal & external systems into one platform, boosting workflow efficiency by 4x and ad slot value by 2.9x.",
       },
       teamComposition: {
-        ko: "FE 2명, BE 2명, 디자이너 1명",
-        en: "FE 2, BE 2, Designer 1",
+        ko: "FE 3명, BE 3명, 앱 개발자 1명, 디자이너 3명",
+        en: "FE 3, BE 2, Android 1, Designer 3",
       },
       systemArchitecture: {
         components: [
@@ -237,18 +239,19 @@ export const projects = {
       title: "Advertiser Homepage",
       company: "FocusMedia Korea",
       role: "Frontend Developer",
-      period: "Apr 2022 – Apr 2024",
+      detailedRole: "Owned About page, FAQ, SAP inquiry forms, CTA components",
+      period: "Oct 2023 – Feb 2024",
       thumbnail: "🎨",
       description:
         "Responsive landing pages with advanced animations and customer journey tracking.",
       achievements: [
         {
           summary: {
-            ko: "리드 전환율 20% 향상",
+            ko: "전환율 1.2배 향상",
             en: "Improved conversion by 1.2x",
           },
           content: {
-            ko: "GTM/GA 트래킹 시스템 구축과 사용자 여정 최적화를 통해 리드 전환율을 20% 향상시켰습니다.",
+            ko: "GTM/GA 트래킹 시스템 구축과 사용자 여정 최적화를 통해 전환율을 1.2배 향상시켰습니다.",
             en: "Improved lead conversion rate by 20% through GTM/GA tracking system implementation and user journey optimization.",
           },
         },
@@ -366,8 +369,8 @@ export const projects = {
         en: "Rebuilt the advertiser-facing homepage with a responsive Next.js architecture and interactive GSAP animations, replacing a static PHP system.\nEnhanced user journey tracking with GTM/GA and optimised inquiry flow, resulting in a 20% uplift in advertiser conversions (1.2x increase).\nImproved perceived engagement and brand recognition through high-performance video preload strategies, supporting FocusMedia's sales pipeline and strengthening client acquisition.",
       },
       teamComposition: {
-        ko: "FE 2명, BE 2명, 디자이너 1명",
-        en: "FE 2, BE 2, Designer 1",
+        ko: "FE 2명, BE 1명, 디자이너 3명",
+        en: "FE 2, BE 1, Designer 3",
       },
       systemArchitecture: {
         components: ["Frontend (React)", "Backend API"],
@@ -419,8 +422,10 @@ export const projects = {
       id: "monthly-grow",
       title: "MonthlyGrow",
       role: "Solo Developer",
-      period: "Apr 2024 – Present",
-      thumbnail: "📈",
+      detailedRole:
+        "Full-stack development, UI/UX design, and product management",
+      period: "Apr 2025 – Aug 2025",
+      thumbnail: "/images/portfolio/monthlyGrow-thumb.webp",
       description:
         "Self-improvement app for structured goal tracking using PARA methodology and AI prompts.",
       achievements: [
@@ -527,7 +532,7 @@ export const projects = {
         en: "AI-powered self-improvement app combining PARA-based goal tracking with automated reflection. Built end-to-end as a solo developer, addressing complex data modeling and balancing cost with UX through automation.",
       },
       teamComposition: {
-        ko: "Solo Project",
+        ko: "개인 프로젝트",
         en: "Solo Project",
       },
       systemArchitecture: {
@@ -540,26 +545,28 @@ export const projects = {
           "Automated monthly snapshots with PARA-based schema and AI integration",
       },
       whatILearned: [
-        "Vite의 빠른 개발 환경과 빌드 성능의 중요성",
-        "MDX를 활용한 기술 블로그 구축과 콘텐츠 관리 전략",
-        "다국어 지원 시스템 설계와 사용자 경험 최적화",
-        "다크/라이트 모드 구현을 통한 접근성과 사용자 선호도 고려",
-        "정적 사이트에서 동적 기능을 구현하는 하이브리드 접근법",
+        "전체 개발 사이클을 혼자 경험하며 자기 주도적 문제 해결 능력 강화",
+        "복잡한 데이터 구조에서 비용과 성능의 트레이드오프 해결 방법",
+        "AI API 통합 시 일관된 응답을 위한 프롬프트 엔지니어링",
+        "Firebase Pub/Sub을 활용한 자동화된 데이터 처리 시스템",
+        "PARA 방법론을 기반으로 한 사용자 중심의 UX 설계",
       ],
       nextSteps: [
-        "SEO 최적화 및 검색 엔진 가시성 향상",
-        "블로그 댓글 시스템 및 소셜 기능 추가",
-        "성능 모니터링 및 분석 도구 통합",
-        "PWA 기능 추가로 모바일 앱 경험 제공",
-        "콘텐츠 관리 시스템(CMS) 도입 고려",
+        "모바일 앱 버전 개발 및 PWA 기능 추가",
+        "AI 응답 품질 개선을 위한 프롬프트 최적화",
+        "사용자 피드백 시스템 및 분석 대시보드 구축",
+        "팀 협업 기능 및 공유 기능 추가",
+        "다국어 지원 및 글로벌 사용자 확장",
       ],
     },
     {
       id: "portfolio-website",
       title: "Portfolio Website",
       role: "Solo Developer",
-      period: "Dec 2024 – Present",
-      thumbnail: "🌐",
+      detailedRole:
+        "Frontend development, responsive design, and content management",
+      period: "Jul 2025 – Aug 2025",
+      thumbnail: "",
       description:
         "Personal portfolio website built with React and Vite, featuring dark mode and responsive design.",
       achievements: [
@@ -614,13 +621,27 @@ export const projects = {
         en: "Personal portfolio website built with React and Vite, featuring dark/light mode toggle, MDX-based blog system, and multi-language support. Implemented performance optimization through code splitting.",
       },
       teamComposition: {
-        ko: "Solo Project",
+        ko: "개인 프로젝트",
         en: "Solo Project",
       },
       systemArchitecture: {
         components: ["Frontend (React + Vite)", "MDX Content", "Static Build"],
         description: "Static Site with Dynamic Features and MDX Blog",
       },
+      whatILearned: [
+        "Vite의 빠른 개발 환경과 빌드 성능의 중요성",
+        "MDX를 활용한 기술 블로그 구축과 콘텐츠 관리 전략",
+        "다국어 지원 시스템 설계와 사용자 경험 최적화",
+        "다크/라이트 모드 구현을 통한 접근성과 사용자 선호도 고려",
+        "정적 사이트에서 동적 기능을 구현하는 하이브리드 접근법",
+      ],
+      nextSteps: [
+        "SEO 최적화 및 검색 엔진 가시성 향상",
+        "블로그 댓글 시스템 및 소셜 기능 추가",
+        "성능 모니터링 및 분석 도구 통합",
+        "PWA 기능 추가로 모바일 앱 경험 제공",
+        "콘텐츠 관리 시스템(CMS) 도입 고려",
+      ],
     },
   ],
 };
@@ -655,7 +676,7 @@ export const educationKo: EducationItem[] = [
     emoji: "🎓",
     title: "컴퓨터과학 학사과정",
     institution: "한국방송통신대학교",
-    period: "Mar 2024 – Feb 2026 (재학)",
+    period: "Mar 2025 – Nov 2026 (재학)",
     location: "원격 (대한민국)",
   },
   {
@@ -690,7 +711,7 @@ export const educationEn: EducationItem[] = [
     emoji: "🎓",
     title: "B.Sc. in Computer Science",
     institution: "Korea National Open University",
-    period: "Mar 2024 – Feb 2026 (in progress)",
+    period: "Mar 2025 – Nov 2026 (in progress)",
     location: "Remote (South Korea)",
   },
   {
