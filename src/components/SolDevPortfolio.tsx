@@ -71,12 +71,6 @@ const SolDevPortfolio = () => {
 
   return (
     <>
-      {/* Google Fonts 로드 */}
-      <link
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-      />
-
       <div
         className={`min-h-screen transition-colors duration-300 ${
           isDark

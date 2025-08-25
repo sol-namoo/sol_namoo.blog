@@ -167,12 +167,13 @@ const ProjectCard = ({
         {project.liveUrl && (
           <a
             href={project.liveUrl}
-            className={`p-1.5 rounded-lg transition-colors ${
+            className={`w-8 h-8 rounded-lg transition-colors flex items-center justify-center ${
               isDark
                 ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
             }`}
             title="Live Site"
+            target="_blank"
           >
             <ExternalLink className="w-3 h-3" />
           </a>
@@ -181,12 +182,13 @@ const ProjectCard = ({
         {project.githubUrl && (
           <a
             href={project.githubUrl}
-            className={`p-1.5 rounded-lg transition-colors ${
+            className={`w-8 h-8 rounded-lg transition-colors flex items-center justify-center ${
               isDark
                 ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
             }`}
             title="GitHub"
+            target="_blank"
           >
             <Github className="w-3 h-3" />
           </a>

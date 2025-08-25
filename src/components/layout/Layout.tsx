@@ -75,7 +75,7 @@ export const Layout = ({ children }: LayoutProps) => {
     <LayoutContext.Provider value={contextValue}>
       {/* Google Fonts 로드 */}
       <link
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@500&display=swap"
         rel="stylesheet"
       />
 

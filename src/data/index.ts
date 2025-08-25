@@ -95,7 +95,7 @@ export const projects = {
       detailedRole:
         "Owned media file upload & management, scheduling UI, and validation architecture",
       period: "Dec 2022 – Apr 2025",
-      thumbnail: "🚀",
+      thumbnail: "/images/portfolio/Thumbnail_fomigo.webp",
       description:
         "Campaign editor, schedule validator, and region-based media planner with SSR migration for improved performance.",
       achievements: [
@@ -241,7 +241,7 @@ export const projects = {
       role: "Frontend Developer",
       detailedRole: "Owned About page, FAQ, SAP inquiry forms, CTA components",
       period: "Oct 2023 – Feb 2024",
-      thumbnail: "🎨",
+      thumbnail: "/images/portfolio/Thumbnail_Homepage.webp",
       description:
         "Responsive landing pages with advanced animations and customer journey tracking.",
       achievements: [
@@ -287,7 +287,7 @@ export const projects = {
         },
       ],
       techStack: ["React 18", "Next.js", "GSAP", "Module CSS", "Vercel"],
-      liveUrl: "#",
+      liveUrl: "https://www.focusmediakorea.com/",
       category: "professional",
       featured: true,
       problemSolving: [
@@ -467,8 +467,8 @@ export const projects = {
         "Claude LLM",
         "GPT-4 API",
       ],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: "https://monthly-grow.vercel.app/",
+      githubUrl: "https://github.com/sol-namoo/monthlyGrow",
       category: "personal",
       featured: true,
       problemSolving: [
@@ -612,8 +612,7 @@ export const projects = {
         },
       ],
       techStack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-      liveUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/sol-namoo/sol_namoo.blog",
       category: "personal",
       featured: false,
       overview: {

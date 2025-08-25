@@ -4,19 +4,12 @@
 
 /* Dancing Script 폰트 정의 */
 @font-face {
-  font-family: "Dancing Script";
+  font-family: '"Edu NSW ACT Cursive", cursive';
+  font-optical-sizing: auto;
+  font-weight: 500;
   font-style: normal;
-  font-weight: 400;
   font-display: swap;
-  src: url("/fonts/DancingScript-Regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Dancing Script";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("/fonts/DancingScript-Bold.woff2") format("woff2");
+  src: url("/fonts/EduNSWACTCursive-Medium.ttf") format("ttf");
 }
 
 @layer base {
