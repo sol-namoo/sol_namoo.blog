@@ -164,9 +164,9 @@ export const AboutPage = ({
                   </div>
                 </div>
                 <span
-                  className={`text-sm ${
+                  className={`text-sm text-right ${
                     isDark ? "text-gray-400" : "text-gray-600"
-                  } ml-4 whitespace-nowrap`}
+                  } ml-4 whitespace-pre-line`}
                 >
                   {item.period}
                 </span>

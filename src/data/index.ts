@@ -675,7 +675,7 @@ export const educationKo: EducationItem[] = [
     emoji: "🎓",
     title: "컴퓨터과학 학사과정",
     institution: "한국방송통신대학교",
-    period: "Mar 2025 – Nov 2026 (재학)",
+    period: "Mar 2025 – Nov 2026\n(재학)",
     location: "원격 (대한민국)",
   },
   {
@@ -710,7 +710,7 @@ export const educationEn: EducationItem[] = [
     emoji: "🎓",
     title: "B.Sc. in Computer Science",
     institution: "Korea National Open University",
-    period: "Mar 2025 – Nov 2026 (in progress)",
+    period: "Mar 2025 – Nov 2026\n(in progress)",
     location: "Remote (South Korea)",
   },
   {
