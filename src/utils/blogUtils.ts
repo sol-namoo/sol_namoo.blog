@@ -19,10 +19,6 @@ export const loadBlogPosts = (): BlogPost[] => {
 
     // 해당 파일의 컴포넌트 importer 함수 찾기
     const importer = componentModules[path]; // ()=>Promise<{ default: Component }>
-    if (!importer) {
-      // 경로가 다르면 실패하므로 한 번 콘솔에서 확인해보자
-      console.warn("MDX importer not found for", path);
-    }
 
     posts.push({
       id: meta.id || slug,

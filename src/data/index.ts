@@ -92,8 +92,10 @@ export const projects = {
       title: "Advertisement Scheduling & Broadcasting Platform",
       company: "FocusMedia Korea",
       role: "Frontend Developer",
-      detailedRole:
-        "Owned media file upload & management, scheduling UI, and validation architecture",
+      detailedRole: {
+        ko: "미디어 파일 업로드 및 관리, 스케줄링 UI, 검증 아키텍처 담당",
+        en: "Owned media file upload & management, scheduling UI, and validation architecture",
+      },
       period: "Dec 2022 – Apr 2025",
       thumbnail: "/images/portfolio/Thumbnail_fomigo.webp",
       description:
@@ -111,21 +113,21 @@ export const projects = {
         },
         {
           summary: {
-            ko: "광고주 문의 전환율 1.2배 향상",
-            en: "Improved advertiser inquiry conversion rate by 1.2x",
+            ko: "사내 워크플로우 효율 4배 향상",
+            en: "Improved internal workflow efficiency by 4x",
           },
           content: {
-            ko: "폼 리팩토링과 미디어 프리로드 최적화를 통해 광고주 문의 전환율을 1.2배 향상시켰습니다.",
-            en: "Improved advertiser inquiry conversion rate by 1.2x through form refactoring and media preload optimization.",
+            ko: "기존 외주 제작 CMS 및 6가지 내외부 업무툴을 통합하여 사내 워크플로우 효율을 4배 향상시켰습니다.",
+            en: "Integrated existing external CMS and six internal/external tools to improve internal workflow efficiency by 4x.",
           },
         },
         {
           summary: {
-            ko: "캠페인 검증 신뢰성 향상",
-            en: "Increased campaign validation reliability",
+            ko: "QA 에러 티켓 25% 감소",
+            en: "Reduced QA error tickets by approximately 25%",
           },
           content: {
-            ko: "모듈화된 Yup 기반 검증으로 캠페인 검증 신뢰성을 향상시켰습니다.",
+            ko: "모듈화된 Yup 기반 검증으로 QA 에러 티켓을 약 25% 감소시켰습니다.",
             en: "Reduced QA error tickets by approximately 25% with modular Yup-based validation.",
           },
         },
@@ -213,7 +215,7 @@ export const projects = {
         en: "Developed a comprehensive advertisement scheduling and broadcasting platform serving the largest elevator media network in Korea (9,000+ screens).\nAs the frontend engineer, I led the migration from React 16 to Next.js 14, built reusable validation systems, and optimised performance for component-heavy pages.\nUnified fragmented internal & external systems into one platform, boosting workflow efficiency by 4x and ad slot value by 2.9x.",
       },
       teamComposition: {
-        ko: "FE 3명, BE 3명, 앱 개발자 1명, 디자이너 3명",
+        ko: "FE 3명, BE 3명, 안드로이드 1명, 디자이너 3명",
         en: "FE 3, BE 2, Android 1, Designer 3",
       },
       systemArchitecture: {
@@ -239,7 +241,10 @@ export const projects = {
       title: "Advertiser Homepage",
       company: "FocusMedia Korea",
       role: "Frontend Developer",
-      detailedRole: "Owned About page, FAQ, SAP inquiry forms, CTA components",
+      detailedRole: {
+        ko: "About 페이지, FAQ, SAP 문의 폼, CTA 컴포넌트 담당",
+        en: "Owned About page, FAQ, SAP inquiry forms, CTA components",
+      },
       period: "Oct 2023 – Feb 2024",
       thumbnail: "/images/portfolio/Thumbnail_Homepage.webp",
       description:
@@ -247,11 +252,11 @@ export const projects = {
       achievements: [
         {
           summary: {
-            ko: "전환율 1.2배 향상",
-            en: "Improved conversion by 1.2x",
+            ko: "리드 전환율 20% 향상",
+            en: "Improved lead conversion rate by 20%",
           },
           content: {
-            ko: "GTM/GA 트래킹 시스템 구축과 사용자 여정 최적화를 통해 전환율을 1.2배 향상시켰습니다.",
+            ko: "GTM/GA 트래킹 시스템 구축과 사용자 여정 최적화를 통해 리드 전환율을 20% 향상시켰습니다.",
             en: "Improved lead conversion rate by 20% through GTM/GA tracking system implementation and user journey optimization.",
           },
         },
@@ -365,7 +370,7 @@ export const projects = {
         },
       ],
       overview: {
-        ko: "광고주 전용 홈페이지를 기존 PHP 기반에서 Next.js 구조와 GSAP 인터랙션으로 재구축했습니다.\nGTM/GA 통합과 문의 플로우 최적화를 통해 **광고주 문의 전환율을 20% 향상(1.2배 증가)**시켰습니다.\n비디오 프리로딩과 고성능 애니메이션으로 사용자 체감 성능과 브랜드 인지도를 높였으며, 이를 통해 세일즈 파이프라인 강화를 지원하고 신규 광고주 확보에 기여했습니다.",
+        ko: "광고주 전용 홈페이지를 기존 PHP 기반에서 Next.js 구조와 GSAP 인터랙션으로 재구축했습니다.\nGTM/GA 통합과 문의 플로우 최적화를 통해 광고주 문의 전환율을 20% 향상(1.2배 증가)시켰습니다.\n비디오 프리로딩과 고성능 애니메이션으로 사용자 체감 성능과 브랜드 인지도를 높였으며, 이를 통해 세일즈 파이프라인 강화를 지원하고 신규 광고주 확보에 기여했습니다.",
         en: "Rebuilt the advertiser-facing homepage with a responsive Next.js architecture and interactive GSAP animations, replacing a static PHP system.\nEnhanced user journey tracking with GTM/GA and optimised inquiry flow, resulting in a 20% uplift in advertiser conversions (1.2x increase).\nImproved perceived engagement and brand recognition through high-performance video preload strategies, supporting FocusMedia's sales pipeline and strengthening client acquisition.",
       },
       teamComposition: {
@@ -422,8 +427,10 @@ export const projects = {
       id: "monthly-grow",
       title: "MonthlyGrow",
       role: "Solo Developer",
-      detailedRole:
-        "Full-stack development, UI/UX design, and product management",
+      detailedRole: {
+        ko: "풀스택 개발, UI/UX 디자인, 제품 관리",
+        en: "Full-stack development, UI/UX design, and product management",
+      },
       period: "Apr 2025 – Aug 2025",
       thumbnail: "/images/portfolio/monthlyGrow-thumb.webp",
       description:
@@ -522,7 +529,7 @@ export const projects = {
             en: "Guided input of required fields via UI forms, designed prompt templates, and added examples to stabilise outputs",
           },
           result: {
-            ko: "응답 관련성과 실행 가능성 높여 안정적인 AI 응답 흐름 확보",
+            ko: "응답 관련성과 실행 가능성을 높여 안정적인 AI 응답 흐름을 확보했습니다",
             en: "Improved response relevance and actionability, enabling stable AI interaction flow",
           },
         },
@@ -563,8 +570,10 @@ export const projects = {
       id: "portfolio-website",
       title: "Portfolio Website",
       role: "Solo Developer",
-      detailedRole:
-        "Frontend development, responsive design, and content management",
+      detailedRole: {
+        ko: "프론트엔드 개발, 반응형 디자인, 콘텐츠 관리",
+        en: "Frontend development, responsive design, and content management",
+      },
       period: "Jul 2025 – Aug 2025",
       thumbnail: "",
       description:
@@ -592,8 +601,8 @@ export const projects = {
         },
         {
           summary: {
-            ko: "코드 분할 성능 최적화",
-            en: "Optimized performance with code splitting",
+            ko: "코드 분할을 통한 성능 최적화",
+            en: "Optimized performance through code splitting",
           },
           content: {
             ko: "코드 분할을 통한 성능 최적화로 초기 로딩 속도를 개선하고 사용자 경험을 향상시켰습니다.",
@@ -695,13 +704,13 @@ export const educationKo: EducationItem[] = [
     emoji: "📜",
     title: "Frontend Bootcamp",
     institution: "Code States",
-    period: "2022",
+    period: "Apr 2022 - Nov 2022",
   },
   {
     emoji: "🎓",
     title: "예술사 예술경영 전공",
     institution: "한국예술종합학교",
-    period: "2015",
+    period: "Mar 2015 - Jul 2020",
   },
 ];
 
@@ -730,12 +739,12 @@ export const educationEn: EducationItem[] = [
     emoji: "📜",
     title: "Frontend Bootcamp",
     institution: "Code States",
-    period: "2022",
+    period: "Apr 2022 - Nov 2022",
   },
   {
     emoji: "🎓",
     title: "B.A. in Arts Management",
     institution: "Korea National University of Arts",
-    period: "2015",
+    period: "Mar 2015 - Jul 2020",
   },
 ];

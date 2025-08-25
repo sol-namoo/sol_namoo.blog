@@ -31,26 +31,17 @@ export const BlogPage = ({
     try {
       // 실제 마크다운 파일에서 블로그 포스트 로드
       const posts = loadBlogPosts();
-      console.log("BlogPage - blogPosts:", posts);
-      console.log("BlogPage - posts length:", posts.length);
       setBlogPosts(posts);
       setFilteredPosts(posts);
     } catch (err) {
-      console.error("블로그 포스트 로딩 오류:", err);
       setError("블로그 포스트를 불러오는 중 오류가 발생했습니다.");
     } finally {
       setIsLoading(false);
-      console.log("BlogPage - isLoading set to false");
     }
   }, []);
 
   // 필터링 로직
   useEffect(() => {
-    console.log("Filtering posts...");
-    console.log("blogPosts:", blogPosts);
-    console.log("selectedCategory:", selectedCategory);
-    console.log("selectedTags:", selectedTags);
-
     let filtered = blogPosts;
 
     // 카테고리 필터링
@@ -65,7 +56,6 @@ export const BlogPage = ({
       );
     }
 
-    console.log("Filtered posts:", filtered);
     setFilteredPosts(filtered);
   }, [blogPosts, selectedCategory, selectedTags, currentLang]);
 
@@ -97,15 +87,6 @@ export const BlogPage = ({
       prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
     );
   };
-
-  console.log(
-    "BlogPage render - isLoading:",
-    isLoading,
-    "error:",
-    error,
-    "filteredPosts.length:",
-    filteredPosts.length
-  );
 
   if (isLoading) {
     return (

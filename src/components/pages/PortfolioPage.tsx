@@ -467,9 +467,15 @@ const ProjectDetailView = ({
                   : "bg-gray-50 border-gray-200"
               }`}
             >
-              <div className="font-semibold mb-2">My Role</div>
+              <div className="font-semibold mb-2">
+                {currentLang === "ko" ? "나의 역할" : "My Role"}
+              </div>
               <p className="text-base mb-1">
-                {project.detailedRole || project.role}
+                {project.detailedRole
+                  ? project.detailedRole[
+                      currentLang as keyof typeof project.detailedRole
+                    ]
+                  : project.role}
               </p>
             </div>
             <div

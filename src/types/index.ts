@@ -70,7 +70,7 @@ export interface Project {
   title: string;
   company?: string; // 회사명 (프로페셔널 프로젝트의 경우)
   role: string; // 역할 (예: "Frontend Developer", "Solo Developer")
-  detailedRole?: string; // 상세 역할 (My Role 섹션에서 사용)
+  detailedRole?: { ko: string; en: string }; // 상세 역할 (My Role 섹션에서 사용)
   period: string; // 기간 (예: "Apr 2022 – Apr 2024")
   thumbnail: string; // 썸네일 (이모지 또는 이미지 URL)
   description: string; // 프로젝트 설명
