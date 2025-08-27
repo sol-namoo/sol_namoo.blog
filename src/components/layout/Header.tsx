@@ -1,6 +1,6 @@
 import { Sun, Moon, Menu, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { SolNamooText } from "../common/SolNamooText";
+import { LogoText } from "../common/LogoText";
 import { YellowMenuStroke } from "../common/YellowMenuStroke";
 import { GreenBorderStroke } from "../common/GreenBorderStroke";
 
@@ -45,9 +45,9 @@ export const Header = ({
       <div className="max-w-6xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* 로고 */}
-          <div className="flex items-center cursor-pointer hover:scale-105 transition-transform">
+          <div className="flex items-center cursor-default hover:scale-105 transition-transform">
             <div className="flex items-baseline space-x-1">
-              <SolNamooText isDark={isDark} />
+              <LogoText isDark={isDark} />
               <span
                 className={`text-lg font-medium ${
                   isDark ? "text-gray-300" : "text-gray-700"

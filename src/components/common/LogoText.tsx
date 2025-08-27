@@ -1,8 +1,8 @@
-interface SolNamooTextProps {
+interface LogoTextProps {
   isDark: boolean;
 }
 
-export const SolNamooText = ({ isDark }: SolNamooTextProps) => (
+export const LogoText = ({ isDark }: LogoTextProps) => (
   <span
     className={`text-xl font-bold ${
       isDark ? "text-green-400" : "text-green-700"
