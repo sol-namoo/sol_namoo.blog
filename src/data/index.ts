@@ -107,8 +107,8 @@ export const projects = {
             en: "Reduced LCP from 2.07s → 1.24s (40% faster initial load)",
           },
           content: {
-            ko: "Code splitting과 동적 로딩을 통해 초기 페이지 로딩 성능을 40% 개선하여 사용자 경험을 크게 향상시켰습니다.",
-            en: "Through code splitting and dynamic loading, improved initial page loading performance by 40%, significantly enhancing user experience.",
+            ko: "분리된 클라이언트 islands + dynamic() 지연 로딩으로 초기 JS·하이드레이션 범위를 축소해 LCP 40% 개선",
+            en: "Reduced initial JS and hydration scope via client islands + dynamic() lazy loading; improved LCP by 40%",
           },
         },
         {
@@ -117,8 +117,8 @@ export const projects = {
             en: "Improved internal workflow efficiency by 4x",
           },
           content: {
-            ko: "기존 외주 제작 CMS 및 6가지 내외부 업무툴을 통합하여 사내 워크플로우 효율을 4배 향상시켰습니다.",
-            en: "Integrated existing external CMS and six internal/external tools to improve internal workflow efficiency by 4x.",
+            ko: "기존 외주 CMS와 내·외부 6개 툴을 통합해 워크플로우 처리량 4배 향상(핸드오프/중복 입력 제거)",
+            en: "Consolidated a legacy CMS and ~6 internal/external tools, yielding 4× higher workflow throughput (eliminated hand-offs/duplicate entry)",
           },
         },
         {
@@ -127,8 +127,8 @@ export const projects = {
             en: "Reduced QA error tickets by approximately 25%",
           },
           content: {
-            ko: "모듈화된 Yup 기반 검증으로 QA 에러 티켓을 약 25% 감소시켰습니다.",
-            en: "Reduced QA error tickets by approximately 25% with modular Yup-based validation.",
+            ko: "Yup 스키마 모듈화와 공용 검증 규약으로 QA 에러 티켓 약 25% 감소",
+            en: "Modular Yup schemas and shared validation conventions cut QA error tickets by ~25%",
           },
         },
         {
@@ -137,8 +137,8 @@ export const projects = {
             en: "Migrated to SSR with Next.js 14",
           },
           content: {
-            ko: "SSR 기반 하이브리드 렌더링으로 SEO 가시성과 장기 유지보수성을 개선했습니다.",
-            en: "Improved SEO visibility and long-term maintainability through SSR-based hybrid rendering.",
+            ko: "Next.js 하이브리드(RSC + SSR/ISR) 도입: 공개 페이지는 정적/재생성으로 속도 개선, 콘솔은 SSR 셸 + CSR 데이터 패턴으로 유지보수성·보안 경계 강화",
+            en: "Adopted Next.js hybrid (RSC + SSR/ISR): static/regenerated public pages for SEO & speed; console uses an SSR shell + CSR data pattern to strengthen maintainability and security boundaries",
           },
         },
       ],
@@ -157,38 +157,38 @@ export const projects = {
       problemSolving: [
         {
           title: {
-            ko: "복잡한 페이지의 성능 병목",
-            en: "Performance bottleneck on complex pages",
+            ko: "복잡한 페이지의 초기 체감 속도",
+            en: "Slow initial perception on a complex page",
           },
           problem: {
-            ko: "무거운 컴포넌트 렌더링으로 인해 LCP가 2초를 초과했습니다.",
-            en: "LCP exceeded 2s due to heavy component rendering.",
+            ko: "다층 스케줄 폼·3개 모달·검증 로직으로 초기 번들/하이드레이션 과다 → LCP 지연",
+            en: "Multi-layer schedule form, 3 modal pickers, and heavy validation inflated the initial bundle/hydration → high LCP",
           },
           solution: {
-            ko: "코드 분할, 동적 임포트, React.memo, useCallback을 적용하여 렌더링을 격리했습니다.",
-            en: "Applied code splitting, dynamic imports, React.memo, and useCallback to isolate renders.",
+            ko: "모달을 클라이언트 islands로 분리해 dynamic() 지연 로드, 셸(헤더/네비/스켈레톤)은 서버에서 프리렌더",
+            en: "Split modals into client islands and dynamic() lazy-load; pre-rendered the shell (header/nav/skeleton) on the server",
           },
           result: {
-            ko: "40% 더 빠른 로딩 시간을 달성했습니다 (2.07초 → 1.24초).",
-            en: "Achieved 40% faster load times (2.07s → 1.24s).",
+            ko: "LCP 40% 개선 (2.07초 → 1.24초).",
+            en: "40% LCP improvement (2.07s → 1.24s).",
           },
         },
         {
           title: {
-            ko: "중첩된 데이터 검증 문제",
-            en: "Nested data validation issues",
+            ko: "하이드레이션/리렌더 병목",
+            en: "Hydration & re-render bottlenecks",
           },
           problem: {
-            ko: "다층 스케줄 폼에서 부모-자식 데이터의 일관성이 떨어지는 경우가 많았습니다.",
-            en: "Multi-layered schedule forms often produced inconsistent parent–child data.",
+            ko: "입력 변경마다 폼 전체 리렌더 → TTI/TBT 지연·입력 지연 체감",
+            en: "Whole-form re-renders on input changes → TTI/TBT degradation and sluggish typing",
           },
           solution: {
-            ko: "Yup과 Context API를 사용한 재사용 가능한 검증 시스템을 설계했습니다.",
-            en: "Designed a reusable validation system with Yup and Context API.",
+            ko: "React Hook Form(uncontrolled) + Yup로 검증 위임, React.memo/useCallback으로 리렌더 격리, 대형 리스트 가상화",
+            en: "Moved to React Hook Form (uncontrolled) with Yup; isolated re-renders using React.memo/useCallback; virtualized large lists",
           },
           result: {
-            ko: "제출 오류를 줄이고 신뢰성을 개선하여 QA 처리 시간을 단축했습니다.",
-            en: "Reduced submission errors, improved reliability, and cut QA turnaround time.",
+            ko: "TTI 체감 개선, 상호작용 응답성 향상",
+            en: "Faster TTI feel and smoother interactions",
           },
         },
         {
@@ -197,16 +197,16 @@ export const projects = {
             en: "Real-time task monitoring",
           },
           problem: {
-            ko: "비디오 트랜스코딩과 IoT 명령 실행을 여러 디바이스에서 추적해야 했습니다.",
-            en: "Needed to track video transcoding & IoT command execution across devices.",
+            ko: "트랜스코딩은 목록에서 미완료 항목만 추적, IoT는 완료 시점 불확실(최대 15분)",
+            en: "Transcoding needed list-level tracking of unfinished items; IoT completion was unpredictable (up to 15 min)",
           },
           solution: {
-            ko: "SSE/WebSocket을 평가하고 안정성을 위해 지수 백오프가 있는 폴링을 채택했습니다.",
-            en: "Evaluated SSE/WebSocket, adopted polling with exponential backoff for stability.",
+            ko: "SSE/WebSocket 검토 후, 인프라/안정성 고려해 미완료만 선택 폴링(지수 백오프); IoT는 진입 시 단발성 조회",
+            en: "Evaluated SSE/WebSocket; chose selective per-item polling with exponential backoff for the list, and one-off fetches for IoT on entry",
           },
           result: {
-            ko: "최소한의 오버헤드로 일관된 작업 완료 추적을 제공했습니다.",
-            en: "Delivered consistent task completion tracking with minimal overhead.",
+            ko: "오버헤드 최소화와 목록의 즉시 반영 달성",
+            en: "Minimal overhead with immediate list updates",
           },
         },
       ],
@@ -575,7 +575,7 @@ export const projects = {
         en: "Frontend development, responsive design, and content management",
       },
       period: "Jul 2025 – Aug 2025",
-      thumbnail: "",
+      thumbnail: "📝",
       description:
         "Personal portfolio website built with React and Vite, featuring dark mode and responsive design.",
       achievements: [
