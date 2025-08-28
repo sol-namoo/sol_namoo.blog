@@ -302,34 +302,34 @@ export const projects = {
             en: "Legacy migration",
           },
           problem: {
-            ko: "기존 사이트는 PHP + 정적 HTML 기반으로 유지보수가 어렵고 SEO/UX 확장성에 한계가 있었습니다.",
+            ko: "기존 사이트는 PHP + 정적 HTML 기반으로 유지보수가 어렵고 SEO/UX 확장성에 한계",
             en: "Existing site was built with static PHP + HTML, which was hard to maintain and limited in SEO/UX scalability.",
           },
           solution: {
-            ko: "Next.js 기반으로 신규 구축하여 모듈형 폼 구조 및 반응형 레이아웃을 구현했습니다.",
+            ko: "Next.js 기반으로 신규 구축하여 모듈형 폼 구조 및 반응형 레이아웃을 구현",
             en: "Built from scratch with Next.js, implementing modular form structure and responsive layout.",
           },
           result: {
-            ko: "SEO 성능을 유지하면서 20%의 UX 개선을 달성했습니다.",
+            ko: "SEO 성능을 유지하면서 20%의 UX 개선을 달성",
             en: "Preserved SEO performance while improving perceived UX by 20% through smoother navigation and faster interactivity.",
           },
         },
         {
           title: {
-            ko: "비디오 퍼포먼스",
-            en: "Video performance",
+            ko: "비디오 퍼포먼스 (호버 영상 버튼 타일)",
+            en: "Video Performance (Hover-Activated Video Tiles)",
           },
           problem: {
-            ko: "Hover 기반 영상 배너의 로딩이 느려 사용자 참여도가 떨어졌습니다.",
-            en: "Hover-triggered video banners suffered from slow load times, causing poor engagement.",
+            ko: "호버 시 배경이 영상으로 전환되는 대형 버튼 타일의 첫 프레임 표시가 느려 초기 상호작용이 저하됨",
+            en: "Large buttons that switch to a video background on hover showed slow first frames, hurting early interactions",
           },
           solution: {
-            ko: "자주 노출되는 영상 에셋을 preload 처리했습니다.",
-            en: "Implemented preload strategies for frequently triggered video assets.",
+            ko: "<video> poster 지정, 히어로 타일만 preconnect + preload 적용, 스크롤해야 보이는 타일은 초기 렌더 직후 로드 시작",
+            en: "Added a <video> poster; applied preconnect + preload only to the hero tile; deferred below-the-fold tiles until right after the initial render",
           },
           result: {
-            ko: "영상 재생 반응성을 개선하여 사용자 참여도와 브랜드 인지도를 높였습니다.",
-            en: "Improved responsiveness of video playback, increasing user interaction and brand impression.",
+            ko: "히어로 타일 TTFF 단축, 오프스크린 타일이 초기 로딩을 막지 않아 초기 렌더 성능과 재생 반응성 개선",
+            en: "Shorter TTFF for the hero and better initial render and playback responsiveness, without off-screen tiles taxing page load",
           },
         },
         {
@@ -338,15 +338,15 @@ export const projects = {
             en: "User journey tracking",
           },
           problem: {
-            ko: "광고주 행동과 캠페인 문의를 추적할 수 있는 중앙 분석 시스템이 없었습니다.",
+            ko: "광고주 행동과 캠페인 문의를 추적할 수 있는 중앙 분석 시스템 부재",
             en: "No central analytics existed for monitoring advertiser behavior and campaign inquiries.",
           },
           solution: {
-            ko: "GTM/GA를 전체 페이지에 통합하여 사용자 여정 데이터를 수집했습니다.",
+            ko: "GTM/GA를 전체 페이지에 통합하여 사용자 여정 데이터를 수집",
             en: "Integrated GTM/GA across the entire site to capture customer journey data.",
           },
           result: {
-            ko: "데이터 기반 의사결정이 가능해졌고 광고 문의 전환율이 20% 상승했습니다.",
+            ko: "데이터 기반 의사결정이 가능해졌고 광고 문의 전환율이 20% 상승",
             en: "Enabled data-driven decision making and contributed to a 20% uplift in advertiser inquiries.",
           },
         },
@@ -356,16 +356,16 @@ export const projects = {
             en: "Fragmented SAP inquiry forms",
           },
           problem: {
-            ko: "SAP문의 폼이 개별 HTML 시트로 관리되어 중복 작업을 만들고 업데이트를 느리게 했습니다.",
-            en: "Multiple PHP/HTML forms tied to separate SAP sheets created duplicated work and slowed updates.",
+            ko: "유형·페이지별 HTML 폼 분리로 중복/검증 불일치가 발생했고, 필드·옵션 변경 시 다중 수정으로 출시가 지연(통상 1–2일)",
+            en: "Separate HTML forms caused duplication and validation drift; field/option changes required multi-touch edits, delaying release (typically 1–2 days).",
           },
           solution: {
-            ko: "폼을 중앙화된 검증과 재사용 가능한 섹션을 가진 조합 가능한 React 모듈 시스템으로 재구축했습니다.",
-            en: "Rebuilt forms into a composable React module system with centralised validation and reusable sections.",
+            ko: "스키마 기반 조합형 React로 통합하고, 글로벌/유형 공통/폼 고유 섹션을 컴포넌트화; sapFields 단일 소스로 SAP 속성·값 매핑 관리",
+            en: "Rebuilt as a schema-driven, composable React system; split global/type-common/form-specific sections and centralized SAP field/value mapping via a single sapFields source",
           },
           result: {
-            ko: "유지보수를 단순화하고 개발자 생산성을 향상시켜 비즈니스 변화에 더 빠르게 적응할 수 있게 했습니다.",
-            en: "Simplified maintenance, improved developer productivity, and enabled faster adaptation to business changes.",
+            ko: "신규 폼·항목 추가 1–2일 → 수시간으로 단축, 변경 지점 단일화. SAP Flow로 케이스별 자동응답 및 타겟 상품설명서 발송 가능",
+            en: "Cut new form/field setup from 1–2 days to hours with a single point of change; SAP Flow enabled case-specific auto-replies and targeted brochure delivery",
           },
         },
       ],
