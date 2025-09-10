@@ -1,5 +1,6 @@
 import React, { useState, createContext, useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { texts } from "../../data";
@@ -73,11 +74,47 @@ export const Layout = ({ children }: LayoutProps) => {
 
   return (
     <LayoutContext.Provider value={contextValue}>
-      {/* Google Fonts 로드 */}
-      <link
-        href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@500&display=swap"
-        rel="stylesheet"
-      />
+      <Helmet>
+        <title>Sol-namoo.blog - Developer Portfolio & Blog</title>
+        <meta
+          name="description"
+          content="Sol Lee's developer blog and portfolio. Sharing experiences in frontend development, React, TypeScript, and more."
+        />
+        <meta
+          name="keywords"
+          content="developer, blog, portfolio, react, typescript, frontend, web development"
+        />
+        <meta name="author" content="Sol Lee" />
+
+        {/* Open Graph */}
+        <meta
+          property="og:title"
+          content="Sol-namoo.blog - Developer Portfolio & Blog"
+        />
+        <meta
+          property="og:description"
+          content="Sol Lee's developer blog and portfolio. Sharing experiences in frontend development, React, TypeScript, and more."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://sol-namoo.blog" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Sol-namoo.blog - Developer Portfolio & Blog"
+        />
+        <meta
+          name="twitter:description"
+          content="Sol Lee's developer blog and portfolio. Sharing experiences in frontend development, React, TypeScript, and more."
+        />
+
+        {/* Google Fonts */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@500&display=swap"
+          rel="stylesheet"
+        />
+      </Helmet>
 
       <div
         className={`min-h-screen transition-colors duration-300 ${

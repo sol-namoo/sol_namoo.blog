@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 import { getBlogPostById } from "../../utils/blogUtils";
 import { getLocalizedTag } from "../../data/tagMapping";
 import { texts, getCategoryLabel } from "../../data";
@@ -33,8 +34,37 @@ export const BlogPostPage = ({ isDark, currentLang }: BlogPostPageProps) => {
     return lazy(post.loadComponent);
   }, [post.loadComponent]);
 
+  const postTitle = post.title[currentLang as keyof typeof post.title];
+  const postExcerpt = post.excerpt[currentLang as keyof typeof post.excerpt];
+
   return (
     <div className="max-w-3xl mx-auto">
+      <Helmet>
+        <title>{postTitle} | Sol-namoo.blog</title>
+        <meta name="description" content={postExcerpt} />
+        <meta name="keywords" content={post.tags.join(", ")} />
+        <meta name="author" content={post.author} />
+
+        {/* Open Graph */}
+        <meta property="og:title" content={postTitle} />
+        <meta property="og:description" content={postExcerpt} />
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:url"
+          content={`https://sol-namoo.blog/blog/${post.id}`}
+        />
+        <meta property="article:author" content={post.author} />
+        <meta property="article:published_time" content={post.date} />
+        {post.updatedAt && (
+          <meta property="article:modified_time" content={post.updatedAt} />
+        )}
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={postTitle} />
+        <meta name="twitter:description" content={postExcerpt} />
+      </Helmet>
+
       {/* 뒤로가기 버튼 */}
       <button
         onClick={() => navigate("/blog")}

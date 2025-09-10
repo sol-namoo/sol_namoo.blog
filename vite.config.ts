@@ -17,7 +17,6 @@ export default defineConfig({
     react(),
   ],
   server: { port: 3003, open: true },
-  // ⛔ assetsInclude 제거
   define: { global: "globalThis" },
   resolve: { alias: { buffer: "buffer" } },
   optimizeDeps: { include: ["buffer"] },
